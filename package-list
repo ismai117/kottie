@@ -2,4 +2,10 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:////PointingToDeclaration/lib/[root]/index.html
 $dokka.location://getPlatformName/#/PointingToDeclaration/lib/[root]/get-platform-name.html
-
+$dokka.location:url_animation//drawAnimationOnCanvas/androidx.compose.ui.Modifier#org.jetbrains.skia.skottie.Animation#kotlin.Float#org.jetbrains.skia.sksg.InvalidationController/PointingToDeclaration/lib/url_animation/[ios]draw-animation-on-canvas.html
+module:lib
+image_animation
+json_animation
+text_animation
+url_animation
+utils
