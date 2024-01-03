@@ -26,16 +26,29 @@ kotlin {
         }
     }
 
+    val ktor = "2.3.7"
+
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
-                implementation(compose.material)
+                implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
+                implementation(compose.ui)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+
+                implementation("io.ktor:ktor-client-core:$ktor")
             }
         }
         val androidMain by getting {
             dependencies {
+                api("androidx.activity:activity-compose:1.7.2")
+                api("androidx.appcompat:appcompat:1.6.1")
+                api("androidx.core:core-ktx:1.10.1")
+                implementation("com.airbnb.android:lottie-compose:6.2.0")
+                implementation("io.ktor:ktor-client-android:$ktor")
             }
         }
         val iosX64Main by getting
@@ -46,9 +59,13 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation("io.ktor:ktor-client-darwin:$ktor")
+            }
         }
         val desktopMain by getting {
             dependencies {
+                implementation("io.ktor:ktor-client-java:$ktor")
             }
         }
     }
