@@ -96,13 +96,13 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("com.example.mylibrary", "mylibrary-runtime", "1.0.0")
+    coordinates("com.ncgroup.kottie", "kottie", "1.0.0")
 
     pom {
         name.set(project.name)
-        description.set("A description of what my library does.")
-        inceptionYear.set("2023")
-        url.set("https://github.com/username/mylibrary/")
+        description.set("Kotlin Multiplatform Animation Library")
+        inceptionYear.set("2024")
+        url.set("https://github.com/ismai117/kottie/")
         licenses {
             license {
                 name.set("The Apache License, Version 2.0")
@@ -112,15 +112,15 @@ mavenPublishing {
         }
         developers {
             developer {
-                id.set("username")
-                name.set("User Name")
-                url.set("https://github.com/username/")
+                id.set("ismai117")
+                name.set("ismai117")
+                url.set("https://github.com/ismai117/")
             }
         }
         scm {
-            url.set("https://github.com/username/mylibrary/")
-            connection.set("scm:git:git://github.com/username/mylibrary.git")
-            developerConnection.set("scm:git:ssh://git@github.com/username/mylibrary.git")
+            url.set("https://github.com/ismai117/kottie/")
+            connection.set("scm:git:git://github.com/ismai117/kottie.git")
+            developerConnection.set("scm:git:ssh://git@github.com/ismai117/kottie.git")
         }
     }
 }
