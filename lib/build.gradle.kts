@@ -1,11 +1,12 @@
+import com.android.build.gradle.internal.ide.kmp.KotlinAndroidSourceSetMarker.Companion.android
 import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    id("org.jetbrains.compose")
-    id("org.jetbrains.dokka")
-    id("com.vanniktech.maven.publish")
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.mavenPublish)
 }
 
 kotlin {
@@ -26,8 +27,6 @@ kotlin {
         }
     }
 
-    val ktor = "2.3.7"
-
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -38,17 +37,16 @@ kotlin {
                 implementation(compose.ui)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
-
-                implementation("io.ktor:ktor-client-core:$ktor")
+                implementation(libs.ktor.client.core)
             }
         }
         val androidMain by getting {
             dependencies {
-                api("androidx.activity:activity-compose:1.7.2")
-                api("androidx.appcompat:appcompat:1.6.1")
-                api("androidx.core:core-ktx:1.10.1")
-                implementation("com.airbnb.android:lottie-compose:6.2.0")
-                implementation("io.ktor:ktor-client-android:$ktor")
+                api(libs.androidx.activityCompose)
+                api(libs.androidx.appcompat)
+                api(libs.androidx.core.ktx)
+                implementation(libs.androidLottie)
+                implementation(libs.ktor.client.android)
             }
         }
         val iosX64Main by getting
@@ -60,12 +58,12 @@ kotlin {
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
             dependencies {
-                implementation("io.ktor:ktor-client-darwin:$ktor")
+                implementation(libs.ktor.client.darwin)
             }
         }
         val desktopMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-java:$ktor")
+                implementation(libs.ktor.client.java)
             }
         }
     }
