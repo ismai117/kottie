@@ -4,7 +4,4 @@
 [![Publish Wiki](https://github.com/KevinnZou/compose-multiplatform-library-template/actions/workflows/wiki.yml/badge.svg)](https://github.com/KevinnZou/compose-multiplatform-library-template/actions/workflows/wiki.yml)
 # [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) Library
 
-# Kottie 
-
-## Kotlin Multiplatform Animation Library 
 
