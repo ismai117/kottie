@@ -19,4 +19,24 @@ Add the dependency in your common module's commonMain sourceSet
 implementation("io.github.ismai117:kottie:latest_version")
 ```
 
+Usage 
+
+```
+url
+
+KottieAnimation(
+  url = "https://lottie.host/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Xano3sW7sH.json",
+  iterations = KottieConstants.IterateForever
+)
+
+file
+
+KottieAnimation(
+ fileName = resource("raw/auth_animation.json"),
+ iterations = KottieConstants.IterateForever
+)
+```
+
+
+
 
