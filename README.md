@@ -11,8 +11,6 @@ Compose Multiplatform Animation Library
 
 Setup
 
-Add Dependency
-
 Add the dependency in your common module's commonMain sourceSet
 
 ```
