@@ -7,9 +7,9 @@
 ![badge-iOS](https://img.shields.io/badge/Platform-iOS-lightgray)
 ![badge-JVM](https://img.shields.io/badge/Platform-JVM-orange)
 
-Compose Multiplatform Animation Library
+## Compose Multiplatform Render After Effects animations Library
 
-Setup
+### Setup
 
 Add the dependency in your common module's commonMain sourceSet
 
