@@ -7,7 +7,7 @@
 ![badge-iOS](https://img.shields.io/badge/Platform-iOS-lightgray)
 ![badge-JVM](https://img.shields.io/badge/Platform-JVM-orange)
 
-## Compose Multiplatform Render After Effects animations Library
+## Compose Multiplatform Render After Effects Animations Library
 
 ### Setup
 
