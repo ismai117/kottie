@@ -7,11 +7,10 @@
 ![badge-iOS](https://img.shields.io/badge/Platform-iOS-lightgray)
 ![badge-JVM](https://img.shields.io/badge/Platform-JVM-orange)
 
-Compose Multiplatform Animation Library
+## Kotlin Multiplatform animation library that parses Adobe After Effects animations. Inspired by Lottie
 
-Setup
+### Setup
 
-Add Dependency
 
 Add the dependency in your common module's commonMain sourceSet
 
