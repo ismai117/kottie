@@ -1,5 +1,7 @@
 import com.android.build.gradle.internal.ide.kmp.KotlinAndroidSourceSetMarker.Companion.android
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+@OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -16,23 +18,35 @@ kotlin {
 
     jvm("desktop")
 
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+        binaries.executable()
+    }
+
+    js {
+        browser()
+        binaries.executable()
+    }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
 
     sourceSets {
+
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
+                implementation(compose.ui)
                 implementation(compose.foundation)
                 implementation(compose.material3)
                 implementation(compose.materialIconsExtended)
-                implementation(compose.ui)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
                 implementation(libs.ktor.client.core)
             }
         }
+
         val androidMain by getting {
             dependencies {
                 api(libs.androidx.activityCompose)
@@ -42,9 +56,11 @@ kotlin {
                 implementation(libs.ktor.client.android)
             }
         }
+
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
+
         val iosMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
@@ -54,16 +70,24 @@ kotlin {
                 implementation(libs.ktor.client.darwin)
             }
         }
+
         val desktopMain by getting {
             dependencies {
                 implementation(libs.ktor.client.java)
             }
         }
+
+        val jsMain by getting {
+            dependencies {
+                implementation(libs.ktor.client.js)
+            }
+        }
     }
 }
 
+
 android {
-    compileSdk = (findProperty("android.compileSdk") as String).toInt()
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     namespace = "com.myapplication.common"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -71,7 +95,7 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        minSdk = (findProperty("android.minSdk") as String).toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -87,7 +111,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.0.0")
+    coordinates("io.github.ismai117", "kottie", "1.1.0")
 
     pom {
         name.set(project.name)
@@ -115,3 +139,4 @@ mavenPublishing {
         }
     }
 }
+
