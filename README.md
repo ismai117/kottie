@@ -10,6 +10,9 @@
 
 ## Kotlin Multiplatform animation library that parses Adobe After Effects animations. Inspired by Lottie
 
+https://github.com/ismai117/kottie/assets/88812838/0fd00aaa-f4a1-4b7a-afd9-cd4f1a680669
+
+
 ### Setup
 
 
