@@ -31,8 +31,10 @@ fun KottieAnimation(
   url = "https://lottie.host/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Xano3sW7sH.json",
   iterations = KottieConstants.IterateForever
 )
+```
 
 File
+
 ``` kotlin
 fun KottieAnimation(
  fileName = resource("raw/auth_animation.json"),
