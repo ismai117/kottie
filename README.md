@@ -49,9 +49,21 @@ KottieAnimation(
 File
 
 ``` kotlin
+// Example 1
+
 KottieAnimation(
- fileName = resource("raw/auth_animation.json"),
- iterations = KottieConstants.IterateForever
+  fileName = resource("raw/auth_animation.json"),
+  iterations = KottieConstants.IterateForever
+)
+
+// Example 2
+
+KottieAnimation(
+  fileName = resource("raw/auth_animation.json"),
+  iterations = 1,
+  completed = {                      
+    println("Animation Completed") 
+  }                                  
 )
 ```
 
