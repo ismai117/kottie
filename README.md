@@ -24,17 +24,17 @@ implementation("io.github.ismai117:kottie:latest_version")
 
 Usage 
 
-```
-url
+Url
 
-KottieAnimation(
+``` kotlin
+fun KottieAnimation(
   url = "https://lottie.host/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Xano3sW7sH.json",
   iterations = KottieConstants.IterateForever
 )
 
-file
-
-KottieAnimation(
+File
+``` kotlin
+fun KottieAnimation(
  fileName = resource("raw/auth_animation.json"),
  iterations = KottieConstants.IterateForever
 )
