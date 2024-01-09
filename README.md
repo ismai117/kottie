@@ -26,10 +26,23 @@ Usage
 
 Url
 
+// 
 ``` kotlin
+// Example 1
+
 KottieAnimation(
   url = "https://lottie.host/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Xano3sW7sH.json",
   iterations = KottieConstants.IterateForever
+)
+
+// Example 2
+
+KottieAnimation(
+  url = "https://lottie.host/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Xano3sW7sH.json",
+  iterations = 1,
+  completed = {
+    println("Animation Completed")
+  }
 )
 ```
 
