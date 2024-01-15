@@ -8,24 +8,17 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 
-
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 actual fun kottieComposition(
     spec: KottieCompositionSpec
 ): Any? {
-    var lottieSpec by remember { mutableStateOf<LottieCompositionSpec?>( null) }
-    LaunchedEffect(spec){
-        lottieSpec = when(spec){
-            is KottieCompositionSpec.File -> {
-                LottieCompositionSpec.JsonString(spec.fileName.readBytes().decodeToString())
-            }
-            is KottieCompositionSpec.JsonString -> {
-                LottieCompositionSpec.JsonString(spec.jsonString)
-            }
-            is KottieCompositionSpec.Url -> {
-                LottieCompositionSpec.Url(spec.url)
-            }
+    var lottieSpec by remember { mutableStateOf<LottieCompositionSpec?>(null) }
+    LaunchedEffect(spec) {
+        lottieSpec = when (spec) {
+            is KottieCompositionSpec.File -> LottieCompositionSpec.JsonString(spec.fileName.readBytes().decodeToString())
+            is KottieCompositionSpec.JsonString -> LottieCompositionSpec.JsonString(spec.jsonString)
+            is KottieCompositionSpec.Url -> LottieCompositionSpec.Url(spec.url)
         }
     }
     return lottieSpec
