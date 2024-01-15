@@ -1,6 +1,4 @@
-import com.android.build.gradle.internal.ide.kmp.KotlinAndroidSourceSetMarker.Companion.android
 import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 
 plugins {
@@ -35,6 +33,7 @@ kotlin {
 
     sourceSets {
 
+
         val commonMain by getting {
             dependencies {
                 implementation(compose.ui)
@@ -45,6 +44,10 @@ kotlin {
                 implementation(compose.components.resources)
                 implementation(libs.ktor.client.core)
             }
+        }
+
+        val skiaMain = create("skiaMain"){
+            dependsOn(commonMain)
         }
 
         val androidMain by getting {
@@ -63,6 +66,7 @@ kotlin {
 
         val iosMain by creating {
             dependsOn(commonMain)
+            dependsOn(skiaMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
@@ -72,12 +76,14 @@ kotlin {
         }
 
         val desktopMain by getting {
+            dependsOn(skiaMain)
             dependencies {
                 implementation(libs.ktor.client.java)
             }
         }
 
         val jsMain by getting {
+            dependsOn(skiaMain)
             dependencies {
                 implementation(libs.ktor.client.js)
             }
@@ -111,7 +117,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.2.1")
+    coordinates("io.github.ismai117", "kottie", "1.3.1")
 
     pom {
         name.set(project.name)

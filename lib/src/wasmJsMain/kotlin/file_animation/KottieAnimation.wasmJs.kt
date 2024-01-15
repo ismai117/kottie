@@ -1,4 +1,4 @@
-package url_animation
+package json_animation
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
@@ -14,25 +14,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.nativeCanvas
-import io.ktor.client.HttpClient
-import io.ktor.client.request.get
-import io.ktor.client.statement.bodyAsText
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.Resource
 import org.jetbrains.skia.Data
-import org.jetbrains.skia.Rect
 import org.jetbrains.skia.skottie.Animation
 import org.jetbrains.skia.sksg.InvalidationController
+import url_animation.drawAnimationOnCanvas
 import kotlin.math.roundToInt
 
-//  ./gradlew shared:jsRun
 
-@OptIn(ExperimentalStdlibApi::class)
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 actual fun KottieAnimation(
     modifier: Modifier,
-    url: String,
+    fileName: Resource,
     speed: Float,
     iterations: Int,
     isPlaying: isPlaying,
@@ -42,14 +37,12 @@ actual fun KottieAnimation(
     var animationState by remember { mutableStateOf<Animation?>(null) }
 
     LaunchedEffect(Unit) {
-        val httpClient = HttpClient()
-        val data = httpClient.get(url)
         animationState = Animation.makeFromData(
-            Data.makeFromBytes(data.bodyAsText().encodeToByteArray())
+            Data.makeFromBytes(fileName.readBytes())
         )
     }
 
-    val time = remember { Animatable(0f) }
+    val time = remember { Animatable(initialValue = 0f) }
 
     when (val animation = animationState) {
         null -> {}
@@ -94,18 +87,4 @@ actual fun KottieAnimation(
     }
 
 
-}
-
-fun Modifier.drawAnimationOnCanvas(
-    animation: Animation,
-    time: Float,
-    invalidationController: InvalidationController
-): Modifier = this then drawWithContent {
-    drawIntoCanvas { canvas ->
-        animation.seekFrameTime(time, invalidationController)
-        animation.render(
-            canvas = canvas.nativeCanvas,
-            dst = Rect.makeWH(size.width, size.height)
-        )
-    }
 }
