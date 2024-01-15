@@ -26,7 +26,7 @@ implementation("io.github.ismai117:kottie:latest_version")
 ### Usage 
 
 
-Url
+Old Version 
 
 // 
 ``` kotlin
