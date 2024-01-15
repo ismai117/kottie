@@ -26,23 +26,6 @@ fun App(
         iterations = 2
     )
 
-    KottieAnimation(
-        composition = composition,
-        progress = { animationState.progress },
-        modifier = modifier.fillMaxSize(),
-    )
-
-    LaunchedEffect(
-        key1 = animationState.isPlaying
-    ) {
-        if (animationState.isPlaying) {
-            println("Animation Playing")
-        }
-        if (animationState.isCompleted) {
-            println("Animation Completed")
-        }
-    }
-
 
     MaterialTheme {
         Column(
