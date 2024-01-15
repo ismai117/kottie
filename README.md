@@ -26,48 +26,40 @@ implementation("io.github.ismai117:kottie:latest_version")
 ### Usage 
 
 
-Old Version 
-
 // 
 ``` kotlin
-// Example 1
 
-KottieAnimation(
-  url = "https://lottie.host/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Xano3sW7sH.json",
-  iterations = KottieConstants.IterateForever
-)
+    // Spec - File, Url, JsonString
 
-// Example 2
+    val composition = rememberKottieComposition(
+        spec = KottieCompositionSpec.Url("https://lottie.host/906091e9-9688-4810-9f6f-56505e9a45e4/Xano3sW7sH.json")
+    )
 
-KottieAnimation(
-  url = "https://lottie.host/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Xano3sW7sH.json",
-  iterations = 1,
-  completed = {
-    println("Animation Completed")
-  }
-)
+    val animationState by animateKottieCompositionAsState(
+        composition = composition,
+        speed = 1f,
+        iterations = 2
+    )
+
+    KottieAnimation(
+        composition = composition,
+        progress = { animationState.progress },
+        modifier = modifier.fillMaxSize(),
+    )
+
+    LaunchedEffect(
+        key1 = animationState.isPlaying
+    ) {
+        if (animationState.isPlaying) {
+            println("Animation Playing")
+        }
+        if (animationState.isCompleted) {
+            println("Animation Completed")
+        }
+    }
+
 ```
 
-File
-
-``` kotlin
-// Example 1
-
-KottieAnimation(
-  fileName = resource("raw/auth_animation.json"),
-  iterations = KottieConstants.IterateForever
-)
-
-// Example 2
-
-KottieAnimation(
-  fileName = resource("raw/auth_animation.json"),
-  iterations = 1,
-  completed = {                      
-    println("Animation Completed") 
-  }                                  
-)
-```
 
 
 
