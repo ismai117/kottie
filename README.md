@@ -25,8 +25,7 @@ implementation("io.github.ismai117:kottie:latest_version")
 
 ### Usage 
 
-
-// 
+ 
 ``` kotlin
 
     // Spec - File, Url, JsonString
