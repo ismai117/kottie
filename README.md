@@ -25,14 +25,13 @@ implementation("io.github.ismai117:kottie:latest_version")
 
 ### Usage 
 
-
-// 
+ 
 ``` kotlin
 
     // Spec - File, Url, JsonString
 
     val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.Url("https://lottie.host/906091e9-9688-4810-9f6f-56505e9a45e4/Xano3sW7sH.json")
+        spec = KottieCompositionSpec.Url("")
     )
 
     val animationState by animateKottieCompositionAsState(
