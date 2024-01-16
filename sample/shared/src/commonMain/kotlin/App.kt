@@ -43,6 +43,7 @@ fun App(
         }
     }
 
+
     LaunchedEffect(
         key1 = animationState.isPlaying
     ) {
