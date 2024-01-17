@@ -2,4 +2,5 @@ sample/** linguist-detectable
 sample/** -linguist-documentation
 sample/**/*.xml -linguist-detectable
 sample/**/*.plist -linguist-detectable
+*.JSON linguist-language=false
 *.kts linguist-language=Kotlin

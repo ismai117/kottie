@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.resource
 
 
 @OptIn(ExperimentalResourceApi::class)
@@ -17,7 +18,7 @@ fun App(
 ) {
 
     val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.Url("https://lottie.host/906091e9-9688-4810-9f6f-56505e9a45e4/Xano3sW7sH.json")
+        spec = KottieCompositionSpec.File(resource("Animation2.json"))
     )
 
     val animationState by animateKottieCompositionAsState(
