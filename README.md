@@ -1,7 +1,7 @@
 <h1 align="center">Kottie</h1></br>
 
 <p align="center">
-🔐 Compose Multiplatform animation library that parses Adobe After Effects animations. Inspired by Airbnb/Lottie.
+Compose Multiplatform animation library that parses Adobe After Effects animations. Inspired by Airbnb/Lottie.
 </p>
 </br>
 
