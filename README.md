@@ -2,7 +2,7 @@
   
 <h1 align="center">Kottie</h1>
 
-&ensp;
+&nbsp;
 
 <p align="center">
   <a href="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie/badge.svg"/></a>
@@ -17,7 +17,7 @@
   <img alt="Platform Js" src="https://img.shields.io/badge/Platform-Js-yellow"/>
 </p>
 
-&ensp;
+&nbsp;
 
 <p align="center">
 🔐 Compose Multiplatform animation library that parses Adobe After Effects animations. Inspired by Airbnb/Lottie.
