@@ -1,5 +1,5 @@
-![Kottie](https://github.com/ismai117/kottie/assets/88812838/1f46e16b-2fff-4fff-8a33-5d954b9e0c03)
-
+<img align="center" src="https://github.com/ismai117/kottie/assets/88812838/1f46e16b-2fff-4fff-8a33-5d954b9e0c03" alt="Kottie">
+  
 <h1 align="center">Kottie</h1>
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie)
@@ -13,8 +13,6 @@
 <p align="center">
 🔐 Compose Multiplatform animation library that parses Adobe After Effects animations. Inspired by Airbnb/Lottie.
 </p>
-
-https://github.com/ismai117/kottie/assets/88812838/0fd00aaa-f4a1-4b7a-afd9-cd4f1a680669
 
 
 ### Setup
