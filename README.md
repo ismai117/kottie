@@ -1,9 +1,9 @@
 <img align="center" src="https://github.com/ismai117/kottie/assets/88812838/1f46e16b-2fff-4fff-8a33-5d954b9e0c03" alt="Kottie">
-  
-<h1 align="center">Kottie</h1>
 
 &nbsp;
-
+  
+<h1 align="center">Kottie</h1>
+&nbsp;
 <p align="center">
   <a href="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie/badge.svg"/></a>
   <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-1.9.21-blue.svg?style=flat&logo=kotlin"/></a>
@@ -16,7 +16,6 @@
   <img alt="Platform JVM" src="https://img.shields.io/badge/Platform-JVM-orange"/>
   <img alt="Platform Js" src="https://img.shields.io/badge/Platform-Js-yellow"/>
 </p>
-
 &nbsp;
 
 <p align="center">
