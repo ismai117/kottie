@@ -2,13 +2,19 @@
   
 <h1 align="center">Kottie</h1>
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie)
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.21-blue.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
-[![compose-jb-version](https://img.shields.io/badge/compose--jb-1.5.11-red)](https://github.com/JetBrains/compose-jb)
-![badge-Android](https://img.shields.io/badge/Platform-Android-brightgreen)
-![badge-iOS](https://img.shields.io/badge/Platform-iOS-lightgray)
-![badge-JVM](https://img.shields.io/badge/Platform-JVM-orange)
-![badge-web](https://img.shields.io/badge/Platform-Js-yellow)
+<p align="center">
+  <a href="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie/badge.svg"/></a>
+  <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-1.9.21-blue.svg?style=flat&logo=kotlin"/></a>
+  <a href="https://github.com/JetBrains/compose-jb"><img alt="compose-jb-version" src="https://img.shields.io/badge/compose--jb-1.5.11-red"/></a>
+</p>
+
+<p align="center">
+  <img alt="Platform Android" src="https://img.shields.io/badge/Platform-Android-brightgreen"/>
+  <img alt="Platform iOS" src="https://img.shields.io/badge/Platform-iOS-lightgray"/>
+  <img alt="Platform JVM" src="https://img.shields.io/badge/Platform-JVM-orange"/>
+  <img alt="Platform Js" src="https://img.shields.io/badge/Platform-Js-yellow"/>
+</p>
+
 
 <p align="center">
 🔐 Compose Multiplatform animation library that parses Adobe After Effects animations. Inspired by Airbnb/Lottie.
