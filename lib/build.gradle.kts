@@ -126,7 +126,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.3.1")
+    coordinates("io.github.ismai117", "kottie", "1.4.1")
 
     pom {
         name.set(project.name)
