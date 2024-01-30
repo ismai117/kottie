@@ -1,17 +1,23 @@
-# Kottie
-[![Maven metadata URL](https://img.shields.io/maven-metadata/v?color=blue&metadataUrl=https://s01.oss.sonatype.org/service/local/repo_groups/public/content/io/github/ismai117/kottie/maven-metadata.xml&style=for-the-badge)](https://repo.maven.apache.org/maven2/io/github/ismai117/kottie/)
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.21-blue.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
-[![compose-jb-version](https://img.shields.io/badge/compose--jb-1.5.11-red)](https://github.com/JetBrains/compose-jb)
+<h1 align="center">Kottie</h1></br>
 
-![badge-Android](https://img.shields.io/badge/Platform-Android-brightgreen)
-![badge-iOS](https://img.shields.io/badge/Platform-iOS-lightgray)
-![badge-JVM](https://img.shields.io/badge/Platform-JVM-orange)
-![badge-web](https://img.shields.io/badge/Platform-Js-yellow)
+<p align="center">
+Compose Multiplatform animation library that parses Adobe After Effects animations. Inspired by Airbnb/Lottie.
+</p>
+</br>
 
-## Compose Multiplatform animation library that parses Adobe After Effects animations. Inspired by Airbnb/Lottie
+<p align="center">
+  <a href="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie/badge.svg"/></a>
+  <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-1.9.21-blue.svg?style=flat&logo=kotlin"/></a>
+  <a href="https://github.com/JetBrains/compose-jb"><img alt="compose-jb-version" src="https://img.shields.io/badge/compose--jb-1.5.11-red"/></a><br>
+  <img alt="Platform Android" src="https://img.shields.io/badge/Platform-Android-brightgreen"/>
+  <img alt="Platform iOS" src="https://img.shields.io/badge/Platform-iOS-lightgray"/>
+  <img alt="Platform JVM" src="https://img.shields.io/badge/Platform-JVM-orange"/>
+  <img alt="Platform Js" src="https://img.shields.io/badge/Platform-Js-yellow"/>
+</p> <br>
 
-https://github.com/ismai117/kottie/assets/88812838/0fd00aaa-f4a1-4b7a-afd9-cd4f1a680669
-
+<p align="center">
+  <img align="center" src="https://github.com/ismai117/kottie/assets/88812838/1f46e16b-2fff-4fff-8a33-5d954b9e0c03" alt="Kottie" width="400"/>
+</p> </br>
 
 ### Setup
 
