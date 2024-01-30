@@ -76,6 +76,7 @@ kotlin {
     }
 }
 
+
 android {
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     namespace = "com.myapplication.common"
@@ -95,3 +96,4 @@ android {
         jvmToolchain(17)
     }
 }
+

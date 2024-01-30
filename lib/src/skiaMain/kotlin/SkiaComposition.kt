@@ -4,12 +4,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
+import io.ktor.util.encodeBase64
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.rememberImageBitmap
 import org.jetbrains.skia.Data
+import org.jetbrains.skia.Image
 import org.jetbrains.skia.skottie.Animation
+import org.jetbrains.skiko.SkiaLayer
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
 
 
 @OptIn(ExperimentalResourceApi::class)
@@ -25,9 +34,7 @@ internal fun rememberSkiaComposition(
     LaunchedEffect(spec) {
         val animation = when (spec) {
             is SkiaCompositionSpec.File -> {
-                Animation.makeFromData(
-                    Data.makeFromBytes(spec.fileName.readBytes())
-                )
+                Animation.makeFromString(spec.fileName.readBytes().decodeToString())
             }
 
             is SkiaCompositionSpec.Url -> {
@@ -39,9 +46,7 @@ internal fun rememberSkiaComposition(
             }
 
             is SkiaCompositionSpec.JsonString -> {
-                Animation.makeFromData(
-                    Data.makeFromBytes(spec.jsonString.encodeToByteArray())
-                )
+                Animation.makeFromString(spec.jsonString)
             }
         }
         animationState = animation
@@ -50,3 +55,4 @@ internal fun rememberSkiaComposition(
     return animationState
 
 }
+

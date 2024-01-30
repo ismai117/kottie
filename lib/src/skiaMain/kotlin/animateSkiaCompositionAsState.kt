@@ -18,6 +18,7 @@ fun animateSkiaCompositionAsState(
     composition: Animation?,
     speed: Float = 1f,
     iterations: Int = 1,
+    isPlaying: Boolean
 ): State<SkiaAnimationState>{
 
     val animatable = remember { Animatable(initialValue = 0f) }
@@ -26,12 +27,16 @@ fun animateSkiaCompositionAsState(
 
     LaunchedEffect(
         composition,
+        isPlaying,
         speed,
         iterations
     ) {
         when (val animation = composition) {
             null -> {}
             else -> {
+
+                if (!isPlaying) return@LaunchedEffect
+
                 animatable.animateTo(
                     targetValue = animation.duration,
                     animationSpec = if (iterations == Int.MAX_VALUE) {
@@ -64,7 +69,7 @@ fun animateSkiaCompositionAsState(
             null -> {}
             else -> {
                 skiaAnimationState.value = skiaAnimationState.value.copy(
-                    composition = composition,
+                    composition = animation,
                     isPlaying = animatable.isRunning,
                     isCompleted = animatable.value > 0.0 && animatable.value == animation.duration,
                     progress = animatable.value,

@@ -1,4 +1,4 @@
-
+package kottieAnimationState
 
 data class KottieAnimationState(
     val composition: Any? = null,

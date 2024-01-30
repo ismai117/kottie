@@ -1,4 +1,9 @@
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 
 plugins {
@@ -33,7 +38,6 @@ kotlin {
 
     sourceSets {
 
-
         val commonMain by getting {
             dependencies {
                 implementation(compose.ui)
@@ -46,7 +50,7 @@ kotlin {
             }
         }
 
-        val skiaMain = create("skiaMain"){
+        val skiaMain = create("skiaMain") {
             dependsOn(commonMain)
         }
 
@@ -88,9 +92,14 @@ kotlin {
                 implementation(libs.ktor.client.js)
             }
         }
+
+//        val wasmJsMain by getting {
+//            dependsOn(skiaMain)
+//        }
+
+
     }
 }
-
 
 android {
     compileSdk = libs.versions.android.compileSdk.get().toInt()

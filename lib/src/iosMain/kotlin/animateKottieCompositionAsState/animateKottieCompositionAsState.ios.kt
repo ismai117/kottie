@@ -1,16 +1,21 @@
+package animateKottieCompositionAsState
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import animateSkiaCompositionAsState
+import kottieAnimationState.KottieAnimationState
 import org.jetbrains.skia.skottie.Animation
 
 @Composable
 actual fun animateKottieCompositionAsState(
     composition: Any?,
     speed: Float,
-    iterations: Int
+    iterations: Int,
+    isPlaying: Boolean
 ): State<KottieAnimationState> {
 
     val kottieAnimationState = remember { mutableStateOf(KottieAnimationState()) }
@@ -18,7 +23,8 @@ actual fun animateKottieCompositionAsState(
     val animationState by animateSkiaCompositionAsState(
         composition = composition as? Animation,
         speed = speed,
-        iterations = iterations
+        iterations = iterations,
+        isPlaying = isPlaying
     )
 
     LaunchedEffect(

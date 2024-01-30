@@ -1,3 +1,6 @@
+package kottieComposition
+
+import SkiaCompositionSpec
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -6,11 +9,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
+
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 actual fun kottieComposition(
     spec: KottieCompositionSpec
-): Any?{
+): Any? {
     var skiaSpec by remember {  mutableStateOf<SkiaCompositionSpec?>( null) }
     LaunchedEffect(spec){
         skiaSpec = when(spec){
