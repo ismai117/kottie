@@ -2,30 +2,8 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:////PointingToDeclaration/lib/[root]/index.html
 $dokka.location://KottieAnimation/#androidx.compose.ui.Modifier#kotlin.Any?#kotlin.Function0[kotlin.Float]/PointingToDeclaration/lib/[root]/-kottie-animation.html
-$dokka.location://animateKottieCompositionAsState/#kotlin.Any?#kotlin.Float#kotlin.Int/PointingToDeclaration/lib/[root]/animate-kottie-composition-as-state.html
-$dokka.location://animateSkiaCompositionAsState/#org.jetbrains.skia.skottie.Animation?#kotlin.Float#kotlin.Int/PointingToDeclaration/lib/[root]/animate-skia-composition-as-state.html
+$dokka.location://animateSkiaCompositionAsState/#org.jetbrains.skia.skottie.Animation?#kotlin.Float#kotlin.Int#kotlin.Boolean/PointingToDeclaration/lib/[root]/animate-skia-composition-as-state.html
 $dokka.location://getPlatformName/#/PointingToDeclaration/lib/[root]/get-platform-name.html
-$dokka.location://kottieComposition/#KottieCompositionSpec/PointingToDeclaration/lib/[root]/kottie-composition.html
-$dokka.location://rememberKottieComposition/#KottieCompositionSpec/PointingToDeclaration/lib/[root]/remember-kottie-composition.html
-$dokka.location:/KottieAnimationState///PointingToDeclaration/lib/[root]/-kottie-animation-state/index.html
-$dokka.location:/KottieAnimationState/KottieAnimationState/#kotlin.Any?#kotlin.Boolean#kotlin.Boolean#kotlin.Float#kotlin.Float#kotlin.Int#kotlin.Float/PointingToDeclaration/lib/[root]/-kottie-animation-state/-kottie-animation-state.html
-$dokka.location:/KottieAnimationState/composition/#/PointingToDeclaration/lib/[root]/-kottie-animation-state/composition.html
-$dokka.location:/KottieAnimationState/duration/#/PointingToDeclaration/lib/[root]/-kottie-animation-state/duration.html
-$dokka.location:/KottieAnimationState/isCompleted/#/PointingToDeclaration/lib/[root]/-kottie-animation-state/is-completed.html
-$dokka.location:/KottieAnimationState/isPlaying/#/PointingToDeclaration/lib/[root]/-kottie-animation-state/is-playing.html
-$dokka.location:/KottieAnimationState/iterations/#/PointingToDeclaration/lib/[root]/-kottie-animation-state/iterations.html
-$dokka.location:/KottieAnimationState/progress/#/PointingToDeclaration/lib/[root]/-kottie-animation-state/progress.html
-$dokka.location:/KottieAnimationState/speed/#/PointingToDeclaration/lib/[root]/-kottie-animation-state/speed.html
-$dokka.location:/KottieCompositionSpec.File///PointingToDeclaration/lib/[root]/-kottie-composition-spec/-file/index.html
-$dokka.location:/KottieCompositionSpec.File/File/#org.jetbrains.compose.resources.Resource/PointingToDeclaration/lib/[root]/-kottie-composition-spec/-file/-file.html
-$dokka.location:/KottieCompositionSpec.File/fileName/#/PointingToDeclaration/lib/[root]/-kottie-composition-spec/-file/file-name.html
-$dokka.location:/KottieCompositionSpec.JsonString///PointingToDeclaration/lib/[root]/-kottie-composition-spec/-json-string/index.html
-$dokka.location:/KottieCompositionSpec.JsonString/JsonString/#kotlin.String/PointingToDeclaration/lib/[root]/-kottie-composition-spec/-json-string/-json-string.html
-$dokka.location:/KottieCompositionSpec.JsonString/jsonString/#/PointingToDeclaration/lib/[root]/-kottie-composition-spec/-json-string/json-string.html
-$dokka.location:/KottieCompositionSpec.Url///PointingToDeclaration/lib/[root]/-kottie-composition-spec/-url/index.html
-$dokka.location:/KottieCompositionSpec.Url/Url/#kotlin.String/PointingToDeclaration/lib/[root]/-kottie-composition-spec/-url/-url.html
-$dokka.location:/KottieCompositionSpec.Url/url/#/PointingToDeclaration/lib/[root]/-kottie-composition-spec/-url/url.html
-$dokka.location:/KottieCompositionSpec///PointingToDeclaration/lib/[root]/-kottie-composition-spec/index.html
 $dokka.location:/SkiaAnimationState///PointingToDeclaration/lib/[root]/-skia-animation-state/index.html
 $dokka.location:/SkiaAnimationState/SkiaAnimationState/#org.jetbrains.skia.skottie.Animation?#kotlin.Boolean#kotlin.Boolean#kotlin.Float#kotlin.Float#kotlin.Int#kotlin.Float/PointingToDeclaration/lib/[root]/-skia-animation-state/-skia-animation-state.html
 $dokka.location:/SkiaAnimationState/composition/#/PointingToDeclaration/lib/[root]/-skia-animation-state/composition.html
@@ -36,4 +14,7 @@ $dokka.location:/SkiaAnimationState/iterations/#/PointingToDeclaration/lib/[roo
 $dokka.location:/SkiaAnimationState/progress/#/PointingToDeclaration/lib/[root]/-skia-animation-state/progress.html
 $dokka.location:/SkiaAnimationState/speed/#/PointingToDeclaration/lib/[root]/-skia-animation-state/speed.html
 module:lib
+animateKottieCompositionAsState
+kottieAnimationState
+kottieComposition
 utils
