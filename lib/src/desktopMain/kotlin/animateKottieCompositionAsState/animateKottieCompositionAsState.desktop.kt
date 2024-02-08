@@ -6,7 +6,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import animateSkiaCompositionAsState
+import animateSkiaCompositionAsState.animateSkiaCompositionAsState
 import kottieAnimationState.KottieAnimationState
 import org.jetbrains.skia.skottie.Animation
 
@@ -30,10 +30,16 @@ actual fun animateKottieCompositionAsState(
     LaunchedEffect(
         animationState.progress
     ) {
+
+        if (animationState.isPlaying){
+            println("progress: ${animationState.progress}")
+            println("duration: ${animationState.duration}")
+        }
+
         kottieAnimationState.value = kottieAnimationState.value.copy(
             composition = animationState.composition,
             isPlaying = animationState.isPlaying,
-            isCompleted = animationState.progress > 0.0 && animationState.progress == animationState.duration,
+            isCompleted = animationState.isCompleted,
             progress = animationState.progress,
             duration = animationState.duration,
             iterations = animationState.iterations,

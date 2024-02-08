@@ -15,17 +15,15 @@ actual fun rememberKottieComposition(
                 rememberLottieComposition(it).value
             }
         }
-
-        is KottieCompositionSpec.JsonString -> {
-            (kottieComposition(spec = spec) as? LottieCompositionSpec)?.let {
-                rememberLottieComposition(it).value
-            }
-        }
-
         is KottieCompositionSpec.Url -> {
             (kottieComposition(spec = spec) as? LottieCompositionSpec)?.let {
                 rememberLottieComposition(it).value
             }
         }
+//        is KottieCompositionSpec.JsonString -> {
+//            (kottieComposition(spec = spec) as? LottieCompositionSpec)?.let {
+//                rememberLottieComposition(it).value
+//            }
+//        }
     }
 }

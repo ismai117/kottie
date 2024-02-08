@@ -1,8 +1,10 @@
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import org.jetbrains.skia.skottie.Animation
+import kotlinx.cinterop.ExperimentalForeignApi
+import lottie.LottieAnimation
 
 
+@OptIn(ExperimentalForeignApi::class)
 @Composable
 actual fun KottieAnimation(
     modifier: Modifier,
@@ -10,10 +12,12 @@ actual fun KottieAnimation(
     progress: () -> Float
 ) {
 
-    SkiaAnimation(
+    LottieAnimation(
         composition = composition,
         progress = { progress() },
         modifier = modifier
     )
 
 }
+
+

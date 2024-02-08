@@ -1,3 +1,6 @@
+package animateSkiaCompositionAsState
+
+import SkiaAnimationState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -20,6 +23,9 @@ fun animateSkiaCompositionAsState(
     iterations: Int = 1,
     isPlaying: Boolean
 ): State<SkiaAnimationState>{
+
+    require(iterations > 0) { "Iterations must be a positive number ($iterations)." }
+    require(speed.isFinite()) { "Speed must be a finite number. It is $speed." }
 
     val animatable = remember { Animatable(initialValue = 0f) }
 
@@ -65,20 +71,21 @@ fun animateSkiaCompositionAsState(
     LaunchedEffect(
         key1 = animatable.value
     ) {
-        when (val animation = composition) {
-            null -> {}
-            else -> {
-                skiaAnimationState.value = skiaAnimationState.value.copy(
-                    composition = animation,
-                    isPlaying = animatable.isRunning,
-                    isCompleted = animatable.value > 0.0 && animatable.value == animation.duration,
-                    progress = animatable.value,
-                    duration = animation.duration,
-                    iterations = iterations,
-                    speed = speed
-                )
-            }
+
+        if (composition == null) {
+            return@LaunchedEffect
         }
+
+        skiaAnimationState.value = skiaAnimationState.value.copy(
+            composition = composition,
+            isPlaying = animatable.isRunning,
+            isCompleted = animatable.value > 0.0 && animatable.value == composition.duration,
+            progress = animatable.value,
+            duration = composition.duration,
+            iterations = iterations,
+            speed = speed
+        )
+
     }
 
     return skiaAnimationState

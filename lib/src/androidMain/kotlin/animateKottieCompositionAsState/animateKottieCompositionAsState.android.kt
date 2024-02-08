@@ -30,15 +30,22 @@ actual fun animateKottieCompositionAsState(
     LaunchedEffect(
         animationState.progress
     ) {
+
+        if (animationState.isPlaying){
+            println("progress: ${animationState.progress.coerceIn(0.0f, 1.0f)}")
+            println("duration: ${animationState.composition?.duration?.coerceIn(0.0f, 1.0f)}")
+        }
+
         kottieAnimationState.value = kottieAnimationState.value.copy(
             composition = animationState.composition,
             isPlaying = animationState.isPlaying,
-            isCompleted = animationState.progress> 0.0 && animationState.progress == animationState.composition?.duration?.coerceIn(0.0f, 1.0f),
+            isCompleted = animationState.progress.coerceIn(0.0f, 1.0f) == animationState.composition?.duration?.coerceIn(0.0f, 1.0f),
             progress = animationState.progress,
             duration = animationState.composition?.duration?.coerceIn(0.0f, 1.0f) ?: 0.0f,
             iterations = animationState.iterations,
             speed = animationState.speed
         )
+
     }
 
     return kottieAnimationState

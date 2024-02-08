@@ -1,6 +1,6 @@
 package kottieComposition
 
-import SkiaCompositionSpec
+import skiaComposition.SkiaCompositionSpec
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.resource
 
 
 @OptIn(ExperimentalResourceApi::class)
@@ -19,14 +20,14 @@ actual fun kottieComposition(
     LaunchedEffect(spec){
         skiaSpec = when(spec){
             is KottieCompositionSpec.File -> {
-                SkiaCompositionSpec.File(spec.fileName)
-            }
-            is KottieCompositionSpec.JsonString -> {
-                SkiaCompositionSpec.JsonString(spec.jsonString)
+                SkiaCompositionSpec.File(resource(spec.path))
             }
             is KottieCompositionSpec.Url -> {
                 SkiaCompositionSpec.Url(spec.url)
             }
+//            is KottieCompositionSpec.JsonString -> {
+//                SkiaCompositionSpec.JsonString(spec.jsonString)
+//            }
         }
     }
     return skiaSpec

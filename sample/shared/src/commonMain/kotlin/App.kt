@@ -19,6 +19,7 @@ import kottieComposition.KottieCompositionSpec
 import kottieComposition.rememberKottieComposition
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.resource
+import utils.KottieConstants
 
 
 @OptIn(ExperimentalResourceApi::class)
@@ -28,21 +29,17 @@ fun App(
 ) {
 
     val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.File(resource("Animation.json"))
+        spec = KottieCompositionSpec.File("Animation.json")
     )
 
     // Url("https://lottie.host/972ae0a6-d541-408f-ba32-25f5a0109c39/lFxAzvdRl8.json")
     // KottieCompositionSpec.File(resource("people.json"))
 
-    val playAnimation = remember { mutableStateOf(false) }
-
     val animationState by animateKottieCompositionAsState(
         composition = composition,
         speed = 1f,
-        iterations = 2,
-        isPlaying = playAnimation.value
+        iterations = 1
     )
-
 
     MaterialTheme {
         Column(
@@ -51,21 +48,15 @@ fun App(
             verticalArrangement = Arrangement.Center
         ) {
 
+            if (animationState.isCompleted) {
+                Text("Animation Completed")
+            }
+
             KottieAnimation(
                 composition = composition,
                 progress = { animationState.progress },
                 modifier = modifier.size(300.dp),
             )
-
-            Button(
-                onClick = {
-                    playAnimation.value = true
-                }
-            ){
-                Text(
-                    text = "Play Animation"
-                )
-            }
 
         }
     }

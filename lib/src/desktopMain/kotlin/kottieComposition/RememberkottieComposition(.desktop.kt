@@ -1,8 +1,8 @@
 package kottieComposition
 
-import SkiaCompositionSpec
+import skiaComposition.SkiaCompositionSpec
 import androidx.compose.runtime.Composable
-import rememberSkiaComposition
+import skiaComposition.rememberSkiaComposition
 
 
 @Composable
@@ -15,15 +15,15 @@ actual fun rememberKottieComposition(
                 rememberSkiaComposition(it)
             }
         }
-        is KottieCompositionSpec.JsonString -> {
-            (kottieComposition(spec = spec) as? SkiaCompositionSpec)?.let {
-                rememberSkiaComposition(it)
-            }
-        }
         is KottieCompositionSpec.Url -> {
             (kottieComposition(spec = spec) as? SkiaCompositionSpec)?.let {
                 rememberSkiaComposition(it)
             }
         }
+//        is KottieCompositionSpec.JsonString -> {
+//            (kottieComposition(spec = spec) as? SkiaCompositionSpec)?.let {
+//                rememberSkiaComposition(it)
+//            }
+//        }
     }
 }
