@@ -39,7 +39,7 @@ actual fun animateKottieCompositionAsState(
         kottieAnimationState.value = kottieAnimationState.value.copy(
             composition = animationState.composition,
             isPlaying = animationState.isPlaying,
-            isCompleted = animationState.progress.coerceIn(0.0f, 1.0f) == animationState.composition?.duration?.coerceIn(0.0f, 1.0f),
+            isCompleted = animationState.progress in 0.99..1.0,
             progress = animationState.progress,
             duration = animationState.composition?.duration?.coerceIn(0.0f, 1.0f) ?: 0.0f,
             iterations = animationState.iterations,

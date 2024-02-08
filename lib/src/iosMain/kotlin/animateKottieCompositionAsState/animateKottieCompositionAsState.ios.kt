@@ -2,6 +2,7 @@ package animateKottieCompositionAsState
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,15 +30,12 @@ actual fun animateKottieCompositionAsState(
         isPlaying = isPlaying
     )
 
-    LaunchedEffect(
-        animationState.progress
-    ) {
+    if (animationState.isPlaying){
+        println("progress: ${animationState.progress}")
+        println("duration: ${animationState.duration}")
+    }
 
-        if (animationState.isPlaying){
-            println("progress: ${animationState.progress}")
-            println("duration: ${animationState.duration}")
-        }
-
+    LaunchedEffect(animationState.progress){
         kottieAnimationState.value = kottieAnimationState.value.copy(
             composition = animationState.composition,
             isPlaying = animationState.isPlaying,
@@ -47,7 +45,6 @@ actual fun animateKottieCompositionAsState(
             iterations = animationState.iterations,
             speed = animationState.speed
         )
-
     }
 
     return kottieAnimationState

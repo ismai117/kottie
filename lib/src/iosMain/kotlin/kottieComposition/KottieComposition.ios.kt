@@ -14,9 +14,9 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 actual fun kottieComposition(
     spec: KottieCompositionSpec
 ): Any? {
-    var skiaSpec by remember {  mutableStateOf<LottieCompositionSpec?>( null) }
+    var    lottieSpec by remember {  mutableStateOf<LottieCompositionSpec?>( null) }
     LaunchedEffect(spec){
-        skiaSpec = when(spec){
+        lottieSpec = when(spec){
             is KottieCompositionSpec.File -> {
                 LottieCompositionSpec.File(spec.path)
             }
@@ -28,5 +28,5 @@ actual fun kottieComposition(
 //            }
         }
     }
-    return skiaSpec
+    return    lottieSpec
 }

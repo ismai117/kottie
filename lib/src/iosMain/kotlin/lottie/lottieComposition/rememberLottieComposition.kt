@@ -8,9 +8,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import cocoapods.lottie_ios.CompatibleAnimation
 import cocoapods.lottie_ios.CompatibleAnimationView
+import cocoapods.lottie_ios.LottieAnimationView
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSBundle
+import platform.Foundation.NSData
 import platform.Foundation.NSURL
+import platform.Foundation.NSURLSession
+import platform.Foundation.dataTaskWithURL
+import platform.Foundation.dataWithContentsOfURL
 
 
 @OptIn(ExperimentalForeignApi::class)
@@ -36,12 +41,12 @@ internal fun rememberLottieComposition(
             }
 
             is LottieCompositionSpec.Url -> {
-                try {
+                val data = NSData.dataWithContentsOfURL(NSURL.URLWithString(spec.url)!!)
+                if (data != null){
                     CompatibleAnimationView(
-                        url = NSURL.URLWithString(spec.url)!!
+                        data = data
                     )
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                }else{
                     null
                 }
             }

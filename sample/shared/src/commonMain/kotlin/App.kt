@@ -28,8 +28,10 @@ fun App(
     modifier: Modifier = Modifier,
 ) {
 
+    var playing by remember { mutableStateOf(false) }
+
     val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.File("Animation.json")
+        spec = KottieCompositionSpec.Url("https://lottie.host/972ae0a6-d541-408f-ba32-25f5a0109c39/lFxAzvdRl8.json")
     )
 
     // Url("https://lottie.host/972ae0a6-d541-408f-ba32-25f5a0109c39/lFxAzvdRl8.json")
@@ -38,7 +40,8 @@ fun App(
     val animationState by animateKottieCompositionAsState(
         composition = composition,
         speed = 1f,
-        iterations = 1
+        iterations = KottieConstants.IterateForever,
+        isPlaying = playing
     )
 
     MaterialTheme {
@@ -48,15 +51,26 @@ fun App(
             verticalArrangement = Arrangement.Center
         ) {
 
-            if (animationState.isCompleted) {
-                Text("Animation Completed")
+//            if (animationState.isCompleted) {
+//                Text("Animation Completed")
+//            }
+
+
+            if (playing){
+                KottieAnimation(
+                    composition = composition,
+                    progress = { animationState.progress },
+                    modifier = modifier.size(300.dp),
+                )
             }
 
-            KottieAnimation(
-                composition = composition,
-                progress = { animationState.progress },
-                modifier = modifier.size(300.dp),
-            )
+            Button(
+                onClick = {
+                    playing = true
+                }
+            ){
+                Text("Play")
+            }
 
         }
     }
@@ -70,6 +84,7 @@ fun App(
         }
         if (animationState.isCompleted) {
             println("Animation Completed")
+            playing = false
         }
     }
 
