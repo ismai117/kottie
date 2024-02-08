@@ -48,6 +48,7 @@ kotlin {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         version = "1.0"
+        ios.deploymentTarget = "17.0"
         pod("lottie-ios"){
             version = "4.4.0"
             moduleName = "Lottie"

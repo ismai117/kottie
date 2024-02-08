@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
     spec.summary                  = 'Some description for the Shared Module'
     spec.vendored_frameworks      = 'build/cocoapods/framework/lib.framework'
     spec.libraries                = 'c++'
-                
+    spec.ios.deployment_target = '17.0'
     spec.dependency 'lottie-ios', '4.4.0'
                 
     if !Dir.exist?('build/cocoapods/framework/lib.framework') || Dir.empty?('build/cocoapods/framework/lib.framework')
