@@ -30,12 +30,6 @@ actual fun animateKottieCompositionAsState(
     LaunchedEffect(
         animationState.progress
     ) {
-
-        if (animationState.isPlaying){
-            println("progress: ${animationState.progress}")
-            println("duration: ${animationState.duration}")
-        }
-
         kottieAnimationState.value = kottieAnimationState.value.copy(
             composition = animationState.composition,
             isPlaying = animationState.isPlaying,
