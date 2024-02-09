@@ -1,5 +1,3 @@
-package animateKottieCompositionAsState
-
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import kottieAnimationState.KottieAnimationState

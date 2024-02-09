@@ -67,6 +67,8 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
                 implementation(libs.ktor.client.core)
+
+
             }
         }
 
@@ -146,7 +148,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.4.2")
+    coordinates("io.github.ismai117", "kottie", "1.4.3-SNAPSHOT")
 
     pom {
         name.set(project.name)

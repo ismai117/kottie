@@ -1,5 +1,6 @@
 package kottieComposition
 
+import KottieCompositionSpec
 import skiaComposition.SkiaCompositionSpec
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -25,9 +26,9 @@ actual fun kottieComposition(
             is KottieCompositionSpec.Url -> {
                 SkiaCompositionSpec.Url(spec.url)
             }
-//            is KottieCompositionSpec.JsonString -> {
-//                SkiaCompositionSpec.JsonString(spec.jsonString)
-//            }
+            is KottieCompositionSpec.JsonString -> {
+                SkiaCompositionSpec.JsonString(spec.jsonString)
+            }
         }
     }
     return skiaSpec

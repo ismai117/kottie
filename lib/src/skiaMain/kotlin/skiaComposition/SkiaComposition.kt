@@ -38,9 +38,9 @@ internal fun rememberSkiaComposition(
                 )
             }
 
-//            is SkiaCompositionSpec.JsonString -> {
-//                Animation.makeFromString(spec.jsonString)
-//            }
+            is SkiaCompositionSpec.JsonString -> {
+                Animation.makeFromString(spec.jsonString)
+            }
         }
         animationState = animation
     }

@@ -1,15 +1,16 @@
-package animateKottieCompositionAsState
-
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import animateSkiaCompositionAsState.animateSkiaCompositionAsState
+import cocoapods.lottie_ios.CompatibleAnimationView
+import kotlinx.cinterop.ExperimentalForeignApi
 import kottieAnimationState.KottieAnimationState
-import org.jetbrains.skia.skottie.Animation
+import lottie.animateLottieCompositionAsState.animateLottieCompositionAsState
 
+@OptIn(ExperimentalForeignApi::class)
 @Composable
 actual fun animateKottieCompositionAsState(
     composition: Any?,
@@ -20,8 +21,8 @@ actual fun animateKottieCompositionAsState(
 
     val kottieAnimationState = remember { mutableStateOf(KottieAnimationState()) }
 
-    val animationState by animateSkiaCompositionAsState(
-        composition = composition as? Animation,
+    val animationState = animateLottieCompositionAsState(
+        composition = composition as? CompatibleAnimationView,
         speed = speed,
         iterations = iterations,
         isPlaying = isPlaying
@@ -29,7 +30,7 @@ actual fun animateKottieCompositionAsState(
 
     LaunchedEffect(
         animationState.progress
-    ) {
+    ){
         kottieAnimationState.value = kottieAnimationState.value.copy(
             composition = animationState.composition,
             isPlaying = animationState.isPlaying,

@@ -1,8 +1,7 @@
-package kottieComposition
-
 import androidx.compose.runtime.Composable
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
+import kottieComposition.kottieComposition
 
 
 @Composable
@@ -20,10 +19,10 @@ actual fun rememberKottieComposition(
                 rememberLottieComposition(it).value
             }
         }
-//        is KottieCompositionSpec.JsonString -> {
-//            (kottieComposition(spec = spec) as? LottieCompositionSpec)?.let {
-//                rememberLottieComposition(it).value
-//            }
-//        }
+        is KottieCompositionSpec.JsonString -> {
+            (kottieComposition(spec = spec) as? LottieCompositionSpec)?.let {
+                rememberLottieComposition(it).value
+            }
+        }
     }
 }

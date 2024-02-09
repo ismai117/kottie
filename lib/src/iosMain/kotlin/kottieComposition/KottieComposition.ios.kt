@@ -1,5 +1,6 @@
 package kottieComposition
 
+import KottieCompositionSpec
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -23,9 +24,9 @@ actual fun kottieComposition(
             is KottieCompositionSpec.Url -> {
                 LottieCompositionSpec.Url(spec.url)
             }
-//            is KottieCompositionSpec.JsonString -> {
-//                LottieCompositionSpec.JsonString(spec.jsonString)
-//            }
+            is KottieCompositionSpec.JsonString -> {
+                LottieCompositionSpec.JsonString(spec.jsonString)
+            }
         }
     }
     return    lottieSpec

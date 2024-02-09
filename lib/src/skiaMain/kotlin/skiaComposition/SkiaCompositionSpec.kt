@@ -11,7 +11,7 @@ internal sealed interface SkiaCompositionSpec {
     @OptIn(ExperimentalResourceApi::class)
     @JvmInline
     value class File (val fileName: Resource) : SkiaCompositionSpec
-//    @JvmInline
-//    value class JsonString(val jsonString: String) : SkiaCompositionSpec
+    @JvmInline
+    value class JsonString(val jsonString: String) : SkiaCompositionSpec
 
 }
