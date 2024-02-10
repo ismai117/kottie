@@ -22,12 +22,6 @@ kotlin {
 
     jvm("desktop")
 
-//    @OptIn(ExperimentalWasmDsl::class)
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
-
     js {
         browser()
         binaries.executable()

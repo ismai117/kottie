@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
 }
@@ -22,14 +23,20 @@ kotlin {
         binaries.executable()
     }
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64(),
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "shared"
-            isStatic = true
+
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
+    cocoapods {
+        summary = "Some description for the Shared Module"
+        homepage = "Link to the Shared Module homepage"
+        version = "1.0"
+        ios.deploymentTarget = "17.0"
+        podfile = project.file("../iosApp/Podfile")
+        pod("lottie-ios") {
+            version = "4.4.0"
+            linkOnly = true
         }
     }
 
