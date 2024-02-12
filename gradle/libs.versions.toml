@@ -1,6 +1,6 @@
 [versions]
 agp = "8.2.2"
-kotlin = "1.9.22"
+kotlin = "1.9.21"
 android-compileSdk= "34"
 android-minSdk= "24"
 android-targetSdk= "34"
@@ -8,11 +8,11 @@ androidx-activityCompose = "1.8.2"
 androidx-appcompat = "1.6.1"
 androidx-core-ktx = "1.12.0"
 compose = "1.6.1"
-compose-plugin = "1.5.12"
+compose-plugin = "1.6.0-alpha01"
 dokka = "1.9.10"
 klint = "12.1.0"
 maven-publish = "0.27.0"
-ktor = "2.3.7"
+ktor = "3.0.0-wasm2"
 lottie = "6.2.0"
 
 [libraries]
@@ -23,6 +23,7 @@ compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 androidLottie = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 
+ktor = { group = "io.ktor", name = "ktor", version.ref = "ktor" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
 ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }

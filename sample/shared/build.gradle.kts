@@ -12,17 +12,16 @@ kotlin {
 
     jvm("desktop")
 
-//    @OptIn(ExperimentalWasmDsl::class)
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+        binaries.executable()
+    }
 
     js {
         browser()
         binaries.executable()
     }
-
 
     iosX64()
     iosArm64()
