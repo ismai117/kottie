@@ -8,7 +8,7 @@ Compose Multiplatform animation library that parses Adobe After Effects animatio
 <p align="center">
   <a href="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie/badge.svg"/></a>
   <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-1.9.22-blue.svg?style=flat&logo=kotlin"/></a>
-  <a href="https://github.com/JetBrains/compose-jb"><img alt="compose-jb-version" src="https://img.shields.io/badge/compose--jb-1.5.12-red"/></a><br>
+  <a href="https://github.com/JetBrains/compose-jb"><img alt="compose-jb-version" src="https://img.shields.io/badge/compose--jb-1.6-0-alpha01-red"/></a><br>
   <img alt="Platform Android" src="https://img.shields.io/badge/Platform-Android-brightgreen"/>
   <img alt="Platform iOS" src="https://img.shields.io/badge/Platform-iOS-lightgray"/>
   <img alt="Platform JVM" src="https://img.shields.io/badge/Platform-JVM-orange"/>
