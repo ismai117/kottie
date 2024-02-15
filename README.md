@@ -6,6 +6,7 @@ Compose Multiplatform animation library that parses Adobe After Effects animatio
 </br>
 
 <p align="center">
+  <img alt="Platform Android" src="https://github.com/ismai117/kottie/releases/tag/1.4.3"/>
  [![Latest release](https://img.shields.io/github/v/release/ismai117/kottie?color=brightgreen&label=latest%20release)](https://github.com/ismai117/kottie/releases/latest)
  [![Latest build](https://img.shields.io/github/v/release/ismai117/kottie?color=orange&include_prereleases&label=latest%20build)](https://github.com/ismai117/kottie/releases)
 <!--   <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-1.9.21-blue.svg?style=flat&logo=kotlin"/></a>
