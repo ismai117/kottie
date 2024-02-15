@@ -5,10 +5,10 @@ Compose Multiplatform animation library that parses Adobe After Effects animatio
 </p>
 </br>
 
+[![Latest release](https://img.shields.io/github/v/release/ismai117/kottie?color=brightgreen&label=latest%20release)](https://github.com/ismai117/kottie/releases/latest)
+[![Latest build](https://img.shields.io/github/v/release/ismai117/kottie?color=orange&include_prereleases&label=latest%20build)](https://github.com/ismai117/kottie/releases)
+
 <p align="center">
-  <img alt="Platform Android" src="https://search.maven.org/artifact/io.github.ismai117/kottie/1.4.3"/>
-<!--   <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-1.9.21-blue.svg?style=flat&logo=kotlin"/></a>
-  <a href="https://github.com/JetBrains/compose-jb"><img alt="compose-jb-version" src="https://img.shields.io/badge/compose--jb-1.6.0-alpha01"/></a><br> -->
   <img alt="Platform Android" src="https://img.shields.io/badge/Platform-Android-brightgreen"/>
   <img alt="Platform iOS" src="https://img.shields.io/badge/Platform-iOS-lightgray"/>
   <img alt="Platform JVM" src="https://img.shields.io/badge/Platform-JVM-orange"/>
