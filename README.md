@@ -1,3 +1,7 @@
+[![Latest release](https://img.shields.io/github/v/release/ismai117/kottie?color=brightgreen&label=latest%20release)](https://github.com/ismai117/kottie/releases/latest)
+[![Latest build](https://img.shields.io/github/v/release/ismai117/kottie?color=orange&include_prereleases&label=latest%20build)](https://github.com/ismai117/kottie/releases)
+<br>
+ 
 <h1 align="center">Kottie</h1></br>
 
 <p align="center">
@@ -6,13 +10,11 @@ Compose Multiplatform animation library that parses Adobe After Effects animatio
 </br>
 
 <p align="center">
-  <a href="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/io.github.ismai117/kottie/badge.svg"/></a>
-  <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-1.9.22-blue.svg?style=flat&logo=kotlin"/></a>
-  <a href="https://github.com/JetBrains/compose-jb"><img alt="compose-jb-version" src="https://img.shields.io/badge/compose--jb-1.5.12-red"/></a><br>
   <img alt="Platform Android" src="https://img.shields.io/badge/Platform-Android-brightgreen"/>
   <img alt="Platform iOS" src="https://img.shields.io/badge/Platform-iOS-lightgray"/>
   <img alt="Platform JVM" src="https://img.shields.io/badge/Platform-JVM-orange"/>
   <img alt="Platform Js" src="https://img.shields.io/badge/Platform-Js-yellow"/>
+  <img alt="Platform Js" src="https://img.shields.io/badge/Platform-Wasm-red"/>
 </p> <br>
 
 <p align="center">
