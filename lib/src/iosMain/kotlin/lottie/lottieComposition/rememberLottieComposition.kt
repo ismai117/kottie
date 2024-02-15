@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import cocoapods.lottie_ios.CompatibleAnimation
 import cocoapods.lottie_ios.CompatibleAnimationView
+import cocoapods.lottie_ios.LottieAnimationLayer
 import cocoapods.lottie_ios.LottieAnimationView
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
@@ -52,7 +53,7 @@ internal fun rememberLottieComposition(
         val animation = when (spec) {
             is LottieCompositionSpec.File -> {
                 CompatibleAnimationView(
-                    CompatibleAnimation(
+                    compatibleAnimation = CompatibleAnimation(
                         name = spec.path,
                         subdirectory = null,
                         bundle = NSBundle.mainBundle
