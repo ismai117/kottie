@@ -5,7 +5,7 @@ import kotlinx.cinterop.ExperimentalForeignApi
 import lottie.LottieAnimation
 
 
-@OptIn(ExperimentalForeignApi::class)
+
 @Composable
 actual fun KottieAnimation(
     modifier: Modifier,

@@ -1,6 +1,6 @@
 package lottie
 
-import androidx.compose.runtime.State
+
 import cocoapods.lottie_ios.CompatibleAnimationView
 import kotlinx.cinterop.ExperimentalForeignApi
 

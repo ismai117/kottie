@@ -8,11 +8,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.airbnb.lottie.compose.LottieCompositionSpec
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.resource
+import org.jetbrains.compose.resources.InternalResourceApi
+import org.jetbrains.compose.resources.readResourceBytes
 
 
-@OptIn(ExperimentalResourceApi::class)
+@OptIn(InternalResourceApi::class)
 @Composable
 actual fun kottieComposition(
     spec: KottieCompositionSpec
@@ -21,7 +21,7 @@ actual fun kottieComposition(
     LaunchedEffect(spec) {
         lottieSpec = when (spec) {
             is KottieCompositionSpec.File -> LottieCompositionSpec.JsonString(
-                resource(spec.path).readBytes().decodeToString()
+                readResourceBytes(spec.path).decodeToString()
             )
             is KottieCompositionSpec.Url -> LottieCompositionSpec.Url(spec.url)
             is KottieCompositionSpec.JsonString -> LottieCompositionSpec.JsonString(spec.jsonString)

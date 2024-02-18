@@ -1,11 +1,8 @@
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -14,8 +11,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kottie.sample.shared.generated.resources.Res
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 
@@ -28,7 +25,7 @@ fun App(
     var playing by remember { mutableStateOf(false) }
 
     val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.File("start_night.json")
+        spec = KottieCompositionSpec.File("files/Animation.json")
     )
 
     // Url("https://lottie.host/972ae0a6-d541-408f-ba32-25f5a0109c39/lFxAzvdRl8.json")
@@ -42,7 +39,7 @@ fun App(
 
     MaterialTheme {
         Column(
-            modifier = modifier.fillMaxSize().background(Color.Black),
+            modifier = modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -51,8 +48,7 @@ fun App(
                 composition = composition,
                 progress = { animationState.progress },
                 modifier = modifier
-                    .size(300.dp),
-                backgroundColor = Color.Black
+                    .size(300.dp)
             )
 
 //            Button(

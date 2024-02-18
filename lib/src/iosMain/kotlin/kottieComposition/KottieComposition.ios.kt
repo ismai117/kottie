@@ -8,14 +8,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import lottie.lottieComposition.LottieCompositionSpec
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 
-@OptIn(ExperimentalResourceApi::class)
+
 @Composable
 actual fun kottieComposition(
     spec: KottieCompositionSpec
 ): Any? {
-    var    lottieSpec by remember {  mutableStateOf<LottieCompositionSpec?>( null) }
+    var lottieSpec by remember {  mutableStateOf<LottieCompositionSpec?>( null) }
     LaunchedEffect(spec){
         lottieSpec = when(spec){
             is KottieCompositionSpec.File -> {

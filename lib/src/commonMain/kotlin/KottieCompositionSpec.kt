@@ -1,3 +1,4 @@
+import kottie.lib.generated.resources.Res
 import kotlin.jvm.JvmInline
 
 
