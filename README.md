@@ -33,7 +33,7 @@ implementation("io.github.ismai117:kottie:latest_version")
 ## Load Animation Composition
 Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString):
 
-```
+```Kotlin
 val composition = rememberKottieComposition(
     spec = KottieCompositionSpec.File("files/Animation.json") // Or use KottieCompositionSpec.Url or KottieCompositionSpec.JsonString
 )
@@ -42,7 +42,7 @@ val composition = rememberKottieComposition(
 ## Animate the Composition
 Animate the loaded composition using animateKottieCompositionAsState function. Optionally, you can control the animation playback and iterations:
 
-```
+```Kotlin
 var playing by remember { mutableStateOf(false) }
 
 val animationState by animateKottieCompositionAsState(
@@ -56,7 +56,7 @@ val animationState by animateKottieCompositionAsState(
 ## Display the Animation
 Display the animation using KottieAnimation composable:
 
-```
+```Kotlin
 MaterialTheme {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -83,7 +83,7 @@ MaterialTheme {
 ## Control Animation Playback
 Control animation playback according to your app's logic. You can use LaunchedEffect to observe animation state changes:
 
-```
+```Kotlin
 LaunchedEffect(
     key1 = animationState.isPlaying
 ) {
