@@ -21,52 +21,100 @@ Compose Multiplatform animation library that parses Adobe After Effects animatio
   <img align="center" src="https://github.com/ismai117/kottie/assets/88812838/1f46e16b-2fff-4fff-8a33-5d954b9e0c03" alt="Kottie" width="400"/>
 </p> </br>
 
-### Setup
+## Getting Started
 
+To integrate Kottie into your Kotlin Multiplatform project
 
-Add the dependency in your common module's commonMain sourceSet
+Add the dependency in your common module's commonMain source set
 
 ```
 implementation("io.github.ismai117:kottie:latest_version")
 ```
 
+## Load Animation Composition
 
-### Usage 
+Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString).
 
- 
-``` kotlin
-
-    // Spec - File, Url, JsonString
-
-    val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.Url("")
-    )
-
-    val animationState by animateKottieCompositionAsState(
-        composition = composition,
-        speed = 1f,
-        iterations = 2
-    )
-
-    KottieAnimation(
-        composition = composition,
-        progress = { animationState.progress },
-        modifier = modifier.fillMaxSize(),
-    )
-
-    LaunchedEffect(
-        key1 = animationState.isPlaying
-    ) {
-        if (animationState.isPlaying) {
-            println("Animation Playing")
-        }
-        if (animationState.isCompleted) {
-            println("Animation Completed")
-        }
-    }
-
-
+```Kotlin
+val composition = rememberKottieComposition(
+    spec = KottieCompositionSpec.File("files/Animation.json") // Or KottieCompositionSpec.Url || KottieCompositionSpec.JsonString
+)
 ```
+
+## Display the Animation
+
+Display the animation using KottieAnimation composable
+
+```Kotlin
+MaterialTheme {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        KottieAnimation(
+            composition = composition,
+            progress = { animationState.progress },
+            modifier = modifier.size(300.dp)
+        )
+    }
+}
+```
+
+## Control Animation Playback
+
+Now, let's explore how to control animation playback and adjust parameters.
+
+Controlling Playback
+You can control animation playback by using a mutableStateOf variable to toggle the animation on and off.
+
+```Kotlin
+var playing by remember { mutableStateOf(false) }
+
+val animationState by animateKottieCompositionAsState(
+    composition = composition,
+    isPlaying = playing
+)
+```
+
+## Adjusting Speed
+
+To change the playback speed of the animation, modify the speed parameter in the animateKottieCompositionAsState function. By default, the speed is set to 1f, indicating normal speed playback. You can increase the speed for faster playback or decrease it for slower playback.
+
+```Kotlin
+val animationState by animateKottieCompositionAsState(
+    composition = composition,
+    speed = 1.5f // Adjust the speed as needed
+)
+```
+
+## Set Iterations
+
+By default, the animation plays once and stops (iterations = 1). You can specify the number of times the animation should repeat using the iterations parameter. Alternatively, you can set it to KottieConstants.IterateForever for the animation to loop indefinitely.
+
+```Kotlin
+val animationState by animateKottieCompositionAsState(
+    composition = composition,
+    iterations = 3 // Play the animation 3 times
+)
+```
+
+## Observing Animation State
+
+You can observe animation state changes using LaunchedEffect.
+
+```Kotlin
+LaunchedEffect(
+    key1 = animationState.isPlaying
+) {
+    if (animationState.isPlaying) {
+        println("Animation Playing")
+    }
+    if (animationState.isCompleted) {
+        println("Animation Completed")
+        playing = false
+    }
+}
 
 
 
