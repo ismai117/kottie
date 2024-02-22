@@ -2,7 +2,7 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:////PointingToDeclaration/lib/[root]/index.html
 $dokka.location://KottieAnimation/#androidx.compose.ui.Modifier#kotlin.Any?#kotlin.Function0[kotlin.Float]#androidx.compose.ui.graphics.Color/PointingToDeclaration/lib/[root]/-kottie-animation.html
-$dokka.location://animateKottieCompositionAsState/#kotlin.Any?#kotlin.Float#kotlin.Int#kotlin.Boolean/PointingToDeclaration/lib/[root]/animate-kottie-composition-as-state.html
+$dokka.location://animateKottieCompositionAsState/#kotlin.Any?#kotlin.Float#kotlin.Int#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/lib/[root]/animate-kottie-composition-as-state.html
 $dokka.location://rememberKottieComposition/#KottieCompositionSpec/PointingToDeclaration/lib/[root]/remember-kottie-composition.html
 $dokka.location:/KottieCompositionSpec.File///PointingToDeclaration/lib/[root]/-kottie-composition-spec/-file/index.html
 $dokka.location:/KottieCompositionSpec.File/File/#kotlin.String/PointingToDeclaration/lib/[root]/-kottie-composition-spec/-file/-file.html
