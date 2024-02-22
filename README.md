@@ -35,7 +35,7 @@ implementation("io.github.ismai117:kottie:latest_version")
 
 Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString).
 
-```kotlin
+```Kotlin
 val composition = rememberKottieComposition(
     spec = KottieCompositionSpec.File("files/Animation.json") // Or KottieCompositionSpec.Url || KottieCompositionSpec.JsonString
 )
@@ -45,7 +45,7 @@ val composition = rememberKottieComposition(
 
 Display the animation using KottieAnimation composable
 
-```kotlin
+```Kotlin
 MaterialTheme {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -68,7 +68,7 @@ Now, let's explore how to control animation playback and adjust parameters.
 Controlling Playback
 You can control animation playback by using a mutableStateOf variable to toggle the animation on and off.
 
-```kotlin
+```Kotlin
 var playing by remember { mutableStateOf(false) }
 
 val animationState by animateKottieCompositionAsState(
@@ -81,7 +81,7 @@ val animationState by animateKottieCompositionAsState(
 
 To change the playback speed of the animation, modify the speed parameter in the animateKottieCompositionAsState function. By default, the speed is set to 1f, indicating normal speed playback. You can increase the speed for faster playback or decrease it for slower playback.
 
-```kotlin
+```Kotlin
 val animationState by animateKottieCompositionAsState(
     composition = composition,
     speed = 1.5f // Adjust the speed as needed
@@ -92,7 +92,7 @@ val animationState by animateKottieCompositionAsState(
 
 By default, the animation plays once and stops (iterations = 1). You can specify the number of times the animation should repeat using the iterations parameter. Alternatively, you can set it to KottieConstants.IterateForever for the animation to loop indefinitely.
 
-```kotlin
+```Kotlin
 val animationState by animateKottieCompositionAsState(
     composition = composition,
     iterations = 3 // Play the animation 3 times
@@ -103,7 +103,7 @@ val animationState by animateKottieCompositionAsState(
 
 You can observe animation state changes using LaunchedEffect.
 
-```kotlin
+```Kotlin
 LaunchedEffect(
     key1 = animationState.isPlaying
 ) {
