@@ -31,7 +31,7 @@ Add the dependency in your common module's commonMain source set
 implementation("io.github.ismai117:kottie:latest_version")
 ```
 
-Load Animation Composition
+## Load Animation Composition
 
 Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString):
 
@@ -41,7 +41,7 @@ val composition = rememberKottieComposition(
 )
 ```
 
-Display the Animation
+## Display the Animation
 
 Display the animation using KottieAnimation composable
 
@@ -61,7 +61,7 @@ MaterialTheme {
 }
 ```
 
-Control Animation Playback
+## Control Animation Playback
 
 Now, let's explore how to control animation playback and adjust parameters.
 
@@ -77,7 +77,7 @@ val animationState by animateKottieCompositionAsState(
 )
 ```
 
-Adjusting Speed
+## Adjusting Speed
 
 To change the playback speed of the animation, modify the speed parameter in the animateKottieCompositionAsState function. By default, the speed is set to 1f, indicating normal speed playback. You can increase the speed for faster playback or decrease it for slower playback.
 
@@ -88,7 +88,7 @@ val animationState by animateKottieCompositionAsState(
 )
 ```
 
-Setting Iterations
+## Set Iterations
 
 By default, the animation plays once and stops (iterations = 1). You can specify the number of times the animation should repeat using the iterations parameter. Alternatively, you can set it to KottieConstants.IterateForever for the animation to loop indefinitely.
 
@@ -99,7 +99,7 @@ val animationState by animateKottieCompositionAsState(
 )
 ```
 
-Observing Animation State
+## Observing Animation State
 
 You can observe animation state changes using LaunchedEffect. For example, to print messages when the animation starts playing and when it completes:
 
