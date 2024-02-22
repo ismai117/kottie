@@ -33,7 +33,7 @@ implementation("io.github.ismai117:kottie:latest_version")
 
 ## Load Animation Composition
 
-Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString):
+Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString).
 
 ```kotlin
 val composition = rememberKottieComposition(
@@ -66,7 +66,7 @@ MaterialTheme {
 Now, let's explore how to control animation playback and adjust parameters.
 
 Controlling Playback
-You can control animation playback by using a mutableStateOf variable to toggle the animation on and off:
+You can control animation playback by using a mutableStateOf variable to toggle the animation on and off.
 
 ```kotlin
 var playing by remember { mutableStateOf(false) }
@@ -101,7 +101,7 @@ val animationState by animateKottieCompositionAsState(
 
 ## Observing Animation State
 
-You can observe animation state changes using LaunchedEffect. For example, to print messages when the animation starts playing and when it completes:
+You can observe animation state changes using LaunchedEffect.
 
 ```kotlin
 LaunchedEffect(
