@@ -21,51 +21,80 @@ Compose Multiplatform animation library that parses Adobe After Effects animatio
   <img align="center" src="https://github.com/ismai117/kottie/assets/88812838/1f46e16b-2fff-4fff-8a33-5d954b9e0c03" alt="Kottie" width="400"/>
 </p> </br>
 
-### Setup
+## Getting Started
 
+To integrate Kottie into your Kotlin Multiplatform project, follow these simple steps:
 
 Add the dependency in your common module's commonMain sourceSet
 
 ```
 implementation("io.github.ismai117:kottie:latest_version")
 ```
+## Load Animation Composition
+Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString):
 
+```
+val composition = rememberKottieComposition(
+    spec = KottieCompositionSpec.File("files/Animation.json") // Or use KottieCompositionSpec.Url or KottieCompositionSpec.JsonString
+)
+```
 
-### Usage 
+## Animate the Composition
+Animate the loaded composition using animateKottieCompositionAsState function. Optionally, you can control the animation playback and iterations:
 
- 
-``` kotlin
+```
+var playing by remember { mutableStateOf(false) }
 
-    // Spec - File, Url, JsonString
+val animationState by animateKottieCompositionAsState(
+    composition = composition,
+    speed = 1f,
+    iterations = KottieConstants.IterateForever, // Or specify a number of iterations
+    isPlaying = playing
+)
+```
 
-    val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.Url("")
-    )
+## Display the Animation
+Display the animation using KottieAnimation composable:
 
-    val animationState by animateKottieCompositionAsState(
-        composition = composition,
-        speed = 1f,
-        iterations = 2
-    )
-
-    KottieAnimation(
-        composition = composition,
-        progress = { animationState.progress },
+```
+MaterialTheme {
+    Column(
         modifier = modifier.fillMaxSize(),
-    )
-
-    LaunchedEffect(
-        key1 = animationState.isPlaying
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-        if (animationState.isPlaying) {
-            println("Animation Playing")
-        }
-        if (animationState.isCompleted) {
-            println("Animation Completed")
+        KottieAnimation(
+            composition = composition,
+            progress = { animationState.progress },
+            modifier = modifier.size(300.dp)
+        )
+
+        Button(
+            onClick = {
+                playing = true
+            }
+        ){
+            Text("Play")
         }
     }
+}
+```
 
+## Control Animation Playback
+Control animation playback according to your app's logic. You can use LaunchedEffect to observe animation state changes:
 
+```
+LaunchedEffect(
+    key1 = animationState.isPlaying
+) {
+    if (animationState.isPlaying) {
+        println("Animation Playing")
+    }
+    if (animationState.isCompleted) {
+        println("Animation Completed")
+        playing = false
+    }
+}
 ```
 
 
