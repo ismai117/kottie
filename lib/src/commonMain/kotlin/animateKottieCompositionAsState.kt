@@ -8,5 +8,6 @@ expect fun animateKottieCompositionAsState(
     composition: Any?,
     speed: Float = 1f,
     iterations: Int = 1,
-    isPlaying: Boolean = true
+    isPlaying: Boolean = true,
+    restartOnPlay: Boolean = false
 ): State<KottieAnimationState>

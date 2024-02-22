@@ -1,8 +1,10 @@
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import com.airbnb.lottie.LottieComposition
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import kottieAnimationState.KottieAnimationState
@@ -13,7 +15,8 @@ actual fun animateKottieCompositionAsState(
     composition: Any?,
     speed: Float,
     iterations: Int,
-    isPlaying: Boolean
+    isPlaying: Boolean,
+    restartOnPlay: Boolean
 ): State<KottieAnimationState> {
 
     val kottieAnimationState = remember { mutableStateOf(KottieAnimationState()) }
@@ -22,7 +25,8 @@ actual fun animateKottieCompositionAsState(
         composition = composition as? LottieComposition,
         speed = speed,
         iterations = iterations,
-        isPlaying = isPlaying
+        isPlaying = isPlaying,
+        restartOnPlay = restartOnPlay
     )
 
     LaunchedEffect(

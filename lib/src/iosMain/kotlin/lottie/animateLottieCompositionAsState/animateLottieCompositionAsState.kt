@@ -4,8 +4,10 @@ package lottie.animateLottieCompositionAsState
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import cocoapods.lottie_ios.CompatibleAnimationView
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.delay
@@ -17,6 +19,7 @@ import lottie.LottieAnimationState
 fun animateLottieCompositionAsState(
     composition: CompatibleAnimationView?,
     isPlaying: Boolean = true,
+    restartOnPlay: Boolean = true,
     speed: Float = 1f,
     iterations: Int = 1
 ): LottieAnimationState {
@@ -25,8 +28,10 @@ fun animateLottieCompositionAsState(
     require(speed.isFinite()) { "Speed must be a finite number. It is $speed." }
 
     val lottieAnimationState = remember { mutableStateOf(LottieAnimationState()) }
+    var wasPlaying by remember { mutableStateOf(isPlaying) }
 
     val progress = remember { mutableStateOf(0.0f) }
+
 
     LaunchedEffect(
         composition,
@@ -38,6 +43,11 @@ fun animateLottieCompositionAsState(
             null -> {}
             else -> {
 
+                if (isPlaying && !wasPlaying && restartOnPlay){
+                    animation.setCurrentProgress(0.0)
+                }
+
+                wasPlaying = isPlaying
                 if (!isPlaying) return@LaunchedEffect
 
                 animation.setLoopAnimationCount(iterations.toDouble())

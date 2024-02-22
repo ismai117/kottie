@@ -10,8 +10,10 @@ import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import org.jetbrains.skia.skottie.Animation
 import kotlin.math.roundToInt
 
@@ -21,13 +23,15 @@ fun animateSkiaCompositionAsState(
     composition: Animation?,
     speed: Float = 1f,
     iterations: Int = 1,
-    isPlaying: Boolean
+    isPlaying: Boolean = true,
+    restartOnPlay: Boolean = true
 ): State<SkiaAnimationState>{
 
     require(iterations > 0) { "Iterations must be a positive number ($iterations)." }
     require(speed.isFinite()) { "Speed must be a finite number. It is $speed." }
 
     val animatable = remember { Animatable(initialValue = 0f) }
+    var wasPlaying by remember { mutableStateOf(isPlaying) }
 
     val skiaAnimationState = remember { mutableStateOf(SkiaAnimationState()) }
 
@@ -41,6 +45,11 @@ fun animateSkiaCompositionAsState(
             null -> {}
             else -> {
 
+                if (isPlaying && !wasPlaying && restartOnPlay){
+                    animatable.snapTo(0f)
+                }
+
+                wasPlaying = isPlaying
                 if (!isPlaying) return@LaunchedEffect
 
                 animatable.animateTo(
@@ -91,3 +100,5 @@ fun animateSkiaCompositionAsState(
     return skiaAnimationState
 
 }
+
+

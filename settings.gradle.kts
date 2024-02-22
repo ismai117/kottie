@@ -5,7 +5,7 @@ include(":lib")
 include(":sample:desktopApp")
 include(":sample:shared")
 include(":sample:webApp")
-include(":sample:webApp-wasm")
+//include(":sample:webApp-wasm")
 
 pluginManagement {
     repositories {
@@ -25,6 +25,6 @@ dependencyResolutionManagement {
         mavenCentral()
         google()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
+//        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
     }
 }

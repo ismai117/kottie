@@ -14,7 +14,8 @@ actual fun animateKottieCompositionAsState(
     composition: Any?,
     speed: Float,
     iterations: Int,
-    isPlaying: Boolean
+    isPlaying: Boolean,
+    restartOnPlay: Boolean
 ): State<KottieAnimationState> {
 
     val kottieAnimationState = remember { mutableStateOf(KottieAnimationState()) }
@@ -23,7 +24,8 @@ actual fun animateKottieCompositionAsState(
         composition = composition as? CompatibleAnimationView,
         speed = speed,
         iterations = iterations,
-        isPlaying = isPlaying
+        isPlaying = isPlaying,
+        restartOnPlay = restartOnPlay
     )
 
     LaunchedEffect(
