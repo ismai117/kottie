@@ -93,7 +93,7 @@ MaterialTheme {
 
         Button(
            onClick = {
-              plaing = true
+              playing = true
            }
         ){
            Text("Play")
