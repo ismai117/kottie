@@ -75,6 +75,33 @@ val animationState by animateKottieCompositionAsState(
     composition = composition,
     isPlaying = playing
 )
+
+MaterialTheme {
+
+    Column(
+        modifier = modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+
+        KottieAnimation(
+            composition = composition,
+            progress = { animationState.progress },
+            modifier = modifier
+                .size(300.dp)
+        )
+
+        Button(
+           onClick = {
+              plaing = true
+           }
+        ){
+           Text("Play")
+        }
+
+    }
+}
+
 ```
 
 ## Adjusting Speed
