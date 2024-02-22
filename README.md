@@ -35,7 +35,7 @@ Load the animation composition using rememberKottieComposition function. Choose 
 
 ```Kotlin
 val composition = rememberKottieComposition(
-    spec = KottieCompositionSpec.File("files/Animation.json") // Or use KottieCompositionSpec.Url or KottieCompositionSpec.JsonString
+    spec = KottieCompositionSpec.File("files/Animation.json") // KottieCompositionSpec.Url || KottieCompositionSpec.JsonString
 )
 ```
 
