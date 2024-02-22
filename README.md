@@ -23,7 +23,7 @@ Compose Multiplatform animation library that parses Adobe After Effects animatio
 
 ## Getting Started
 
-To integrate Kottie into your Kotlin Multiplatform project, follow these simple steps:
+To integrate Kottie into your Kotlin Multiplatform project
 
 Add the dependency in your common module's commonMain sourceSet
 
