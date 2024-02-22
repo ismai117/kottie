@@ -47,16 +47,19 @@ Display the animation using KottieAnimation composable
 
 ```Kotlin
 MaterialTheme {
+
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+
         KottieAnimation(
             composition = composition,
             progress = { animationState.progress },
             modifier = modifier.size(300.dp)
         )
+
     }
 }
 ```
