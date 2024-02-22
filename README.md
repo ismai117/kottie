@@ -68,7 +68,6 @@ MaterialTheme {
 
 Now, let's explore how to control animation playback and adjust parameters.
 
-Controlling Playback
 You can control animation playback by using a mutableStateOf variable to toggle the animation on and off.
 
 ```Kotlin
