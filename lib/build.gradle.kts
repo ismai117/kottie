@@ -1,8 +1,4 @@
 import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
-import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 
@@ -20,18 +16,12 @@ kotlin {
         publishLibraryVariants("release")
     }
 
-    jvm("desktop")
+    jvm()
 
     js {
         browser()
         binaries.executable()
     }
-
-//    @OptIn(ExperimentalWasmDsl::class)
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
 
     listOf(
         iosX64(),
@@ -89,7 +79,6 @@ kotlin {
         val iosSimulatorArm64Main by getting
 
         val iosMain by creating {
-            dependsOn(commonMain)
             dependsOn(skiaMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
@@ -99,7 +88,7 @@ kotlin {
             }
         }
 
-        val desktopMain by getting {
+        val jvmMain by getting {
             dependsOn(skiaMain)
             dependencies {
                 implementation(libs.ktor.client.java)
@@ -112,11 +101,6 @@ kotlin {
                 implementation(libs.ktor.client.js)
             }
         }
-
-//        val wasmJsMain by getting {
-//            dependsOn(skiaMain)
-//        }
-
 
     }
 }

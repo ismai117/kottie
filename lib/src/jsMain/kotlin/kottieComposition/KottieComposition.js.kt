@@ -1,6 +1,5 @@
 package kottieComposition
 
-import KottieCompositionSpec
 import skiaComposition.SkiaCompositionSpec
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

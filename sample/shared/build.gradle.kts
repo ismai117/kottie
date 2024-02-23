@@ -10,13 +10,7 @@ plugins {
 kotlin {
     androidTarget()
 
-    jvm("desktop")
-
-//    @OptIn(ExperimentalWasmDsl::class)
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
+    jvm()
 
     js {
         browser()
@@ -69,7 +63,7 @@ kotlin {
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
         }
-        val desktopMain by getting {
+        val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
             }

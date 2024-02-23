@@ -1,6 +1,7 @@
+package kottieComposition
+
 import skiaComposition.SkiaCompositionSpec
 import androidx.compose.runtime.Composable
-import kottieComposition.kottieComposition
 import skiaComposition.rememberSkiaComposition
 
 @Composable

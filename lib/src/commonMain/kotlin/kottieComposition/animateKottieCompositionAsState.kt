@@ -1,3 +1,5 @@
+package kottieComposition
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import kottieAnimationState.KottieAnimationState
@@ -9,5 +11,5 @@ expect fun animateKottieCompositionAsState(
     speed: Float = 1f,
     iterations: Int = 1,
     isPlaying: Boolean = true,
-    restartOnPlay: Boolean = false
+    restartOnPlay: Boolean = true
 ): State<KottieAnimationState>

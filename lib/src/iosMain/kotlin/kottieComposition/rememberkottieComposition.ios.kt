@@ -1,6 +1,7 @@
+package kottieComposition
+
 import androidx.compose.runtime.Composable
 import kotlinx.cinterop.ExperimentalForeignApi
-import kottieComposition.kottieComposition
 import lottie.lottieComposition.LottieCompositionSpec
 import lottie.lottieComposition.rememberLottieComposition
 

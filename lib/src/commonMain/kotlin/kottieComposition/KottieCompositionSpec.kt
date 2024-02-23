@@ -1,4 +1,5 @@
-import kottie.lib.generated.resources.Res
+package kottieComposition
+
 import kotlin.jvm.JvmInline
 
 
