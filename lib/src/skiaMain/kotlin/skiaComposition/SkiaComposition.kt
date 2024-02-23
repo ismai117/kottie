@@ -20,11 +20,9 @@ import org.jetbrains.skia.skottie.Animation
 internal fun rememberSkiaComposition(
     spec: SkiaCompositionSpec
 ): Animation? {
-
     var animationState by remember(spec) {
         mutableStateOf<Animation?>(null)
     }
-
     LaunchedEffect(spec) {
         val animation = when (spec) {
             is SkiaCompositionSpec.File -> {
@@ -47,8 +45,6 @@ internal fun rememberSkiaComposition(
         }
         animationState = animation
     }
-
     return animationState
-
 }
 

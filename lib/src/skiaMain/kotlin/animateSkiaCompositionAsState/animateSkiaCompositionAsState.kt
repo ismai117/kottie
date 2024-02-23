@@ -44,12 +44,11 @@ fun animateSkiaCompositionAsState(
         when (val animation = composition) {
             null -> {}
             else -> {
-
                 if (isPlaying && !wasPlaying && restartOnPlay){
                     animatable.snapTo(0f)
                 }
-
                 wasPlaying = isPlaying
+
                 if (!isPlaying) return@LaunchedEffect
 
                 animatable.animateTo(
@@ -76,15 +75,12 @@ fun animateSkiaCompositionAsState(
             }
         }
     }
-
     LaunchedEffect(
         key1 = animatable.value
     ) {
-
         if (composition == null) {
             return@LaunchedEffect
         }
-
         skiaAnimationState.value = skiaAnimationState.value.copy(
             composition = composition,
             isPlaying = animatable.isRunning,
@@ -94,11 +90,8 @@ fun animateSkiaCompositionAsState(
             iterations = iterations,
             speed = speed
         )
-
     }
-
     return skiaAnimationState
-
 }
 
 

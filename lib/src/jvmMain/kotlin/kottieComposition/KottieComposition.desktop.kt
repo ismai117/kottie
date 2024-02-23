@@ -9,7 +9,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 
 
-
 @Composable
 actual fun kottieComposition(
     spec: KottieCompositionSpec

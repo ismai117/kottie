@@ -5,7 +5,6 @@ import com.airbnb.lottie.LottieComposition
 import com.airbnb.lottie.compose.LottieAnimation
 
 
-
 @Composable
 actual fun KottieAnimation(
     modifier: Modifier,
@@ -13,12 +12,10 @@ actual fun KottieAnimation(
     progress: () -> Float,
     backgroundColor: androidx.compose.ui.graphics.Color
 ) {
-
     LottieAnimation(
         composition = composition as? LottieComposition,
         progress = { progress() },
         modifier = modifier
             .background(backgroundColor)
     )
-
 }

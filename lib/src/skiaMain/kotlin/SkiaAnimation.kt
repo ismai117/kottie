@@ -15,9 +15,7 @@ internal fun SkiaAnimation(
     progress: () -> Float,
     backgroundColor: Color
 ) {
-
     val invalidationController = remember { InvalidationController() }
-
     when (val animation = composition as? Animation) {
         null -> {}
         else -> {
@@ -32,5 +30,4 @@ internal fun SkiaAnimation(
             ) {}
         }
     }
-
 }

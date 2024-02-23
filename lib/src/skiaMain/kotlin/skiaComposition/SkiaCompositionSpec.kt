@@ -11,5 +11,4 @@ internal sealed interface SkiaCompositionSpec {
     value class File (val path: String) : SkiaCompositionSpec
     @JvmInline
     value class JsonString(val jsonString: String) : SkiaCompositionSpec
-
 }

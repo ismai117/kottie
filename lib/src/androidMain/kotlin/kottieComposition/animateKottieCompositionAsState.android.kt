@@ -18,9 +18,7 @@ actual fun animateKottieCompositionAsState(
     isPlaying: Boolean,
     restartOnPlay: Boolean
 ): State<KottieAnimationState> {
-
     val kottieAnimationState = remember { mutableStateOf(KottieAnimationState()) }
-
     val animationState = animateLottieCompositionAsState(
         composition = composition as? LottieComposition,
         speed = speed,
@@ -28,7 +26,6 @@ actual fun animateKottieCompositionAsState(
         isPlaying = isPlaying,
         restartOnPlay = restartOnPlay
     )
-
     LaunchedEffect(
         animationState.progress
     ) {
@@ -42,7 +39,5 @@ actual fun animateKottieCompositionAsState(
             speed = animationState.speed
         )
     }
-
     return kottieAnimationState
-
 }

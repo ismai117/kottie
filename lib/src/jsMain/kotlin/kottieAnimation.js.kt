@@ -10,12 +10,10 @@ actual fun KottieAnimation(
     progress: () -> Float,
     backgroundColor: Color
 ) {
-
     SkiaAnimation(
         composition = composition,
         progress = { progress() },
         modifier = modifier,
         backgroundColor = backgroundColor
     )
-
 }

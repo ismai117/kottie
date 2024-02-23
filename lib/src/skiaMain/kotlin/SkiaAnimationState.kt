@@ -1,8 +1,5 @@
 import org.jetbrains.skia.skottie.Animation
 
-
-
-
 data class SkiaAnimationState(
     val composition: Animation? = null,
     val isPlaying: Boolean = false,
