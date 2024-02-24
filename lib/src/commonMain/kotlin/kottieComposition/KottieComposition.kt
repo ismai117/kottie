@@ -5,6 +5,6 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-expect fun kottieComposition (
+expect fun kottieComposition(
     spec: KottieCompositionSpec
 ): Any?

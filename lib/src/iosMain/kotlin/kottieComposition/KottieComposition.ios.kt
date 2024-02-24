@@ -8,7 +8,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import lottie.lottieComposition.LottieCompositionSpec
 
-
 @Composable
 actual fun kottieComposition(
     spec: KottieCompositionSpec

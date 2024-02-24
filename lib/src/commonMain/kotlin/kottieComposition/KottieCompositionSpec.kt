@@ -10,5 +10,4 @@ sealed interface KottieCompositionSpec {
     value class File (val path: String) : KottieCompositionSpec
     @JvmInline
     value class JsonString(val jsonString: String) : KottieCompositionSpec
-
 }

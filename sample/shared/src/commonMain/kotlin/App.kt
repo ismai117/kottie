@@ -1,6 +1,7 @@
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -23,6 +24,7 @@ import kottieComposition.rememberKottieComposition
 fun App(
     modifier: Modifier = Modifier,
 ) {
+
 
     val composition = rememberKottieComposition(
         spec = KottieCompositionSpec.File("files/Animation.json")
@@ -53,18 +55,12 @@ fun App(
 
             Button(
                 onClick = {
-
+                    isPlaying = true
                 }
             ){
-                Button(
-                    onClick = {
-                        isPlaying = true
-                    }
-                ){
-                    Text(
-                        text = "Play"
-                    )
-                }
+                Text(
+                    text = "Play"
+                )
             }
 
         }

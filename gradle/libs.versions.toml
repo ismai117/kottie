@@ -8,11 +8,11 @@ androidx-activityCompose = "1.8.2"
 androidx-appcompat = "1.6.1"
 androidx-core-ktx = "1.12.0"
 compose = "1.6.1"
-compose-plugin = "1.6.0-rc02"
+compose-plugin = "1.6.0-rc03"
 dokka = "1.9.10"
 klint = "12.1.0"
 maven-publish = "0.27.0"
-ktor = "2.3.8"
+ktor = "3.0.0-wasm2"
 lottie = "6.2.0"
 
 [libraries]

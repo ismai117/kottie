@@ -1,4 +1,5 @@
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 
@@ -19,6 +20,12 @@ kotlin {
     jvm()
 
     js {
+        browser()
+        binaries.executable()
+    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
         browser()
         binaries.executable()
     }
@@ -100,6 +107,10 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.client.js)
             }
+        }
+
+        val wasmJsMain by getting {
+            dependsOn(skiaMain)
         }
 
     }
