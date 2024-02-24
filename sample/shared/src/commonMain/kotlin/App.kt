@@ -38,7 +38,6 @@ fun App(
         isPlaying = isPlaying
     )
 
-
     MaterialTheme {
         Column(
             modifier = modifier.fillMaxSize(),
@@ -59,7 +58,10 @@ fun App(
                 }
             ){
                 Text(
-                    text = "Play"
+                    text = when(isPlaying){
+                        true -> "Playing..."
+                        false -> "Play"
+                    }
                 )
             }
 
