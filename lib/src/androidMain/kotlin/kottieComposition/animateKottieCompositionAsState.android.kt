@@ -6,6 +6,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import com.airbnb.lottie.LottieComposition
+import com.airbnb.lottie.compose.LottieClipSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import kottieAnimationState.KottieAnimationState
 
@@ -26,7 +27,8 @@ actual fun animateKottieCompositionAsState(
         speed = speed,
         iterations = iterations,
         isPlaying = isPlaying,
-        restartOnPlay = restartOnPlay
+        restartOnPlay = restartOnPlay,
+        ignoreSystemAnimatorScale = true
     )
 
     LaunchedEffect(

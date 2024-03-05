@@ -1,8 +1,6 @@
 import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
-@OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlinCocoapods)
@@ -30,24 +28,13 @@ kotlin {
         binaries.executable()
     }
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64(),
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "lib"
-            isStatic = true
-        }
-    }
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 
     cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
         version = "1.0"
-        ios.deploymentTarget = "17.0"
         pod("lottie-ios"){
-            version = "4.4.0"
             moduleName = "Lottie"
             extraOpts += listOf("-compiler-option", "-fmodules")
         }
@@ -61,9 +48,8 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.material3)
                 implementation(compose.materialIconsExtended)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                implementation(compose.components.resources)
                 implementation(libs.ktor.client.core)
+                implementation(compose.components.resources)
             }
         }
 
@@ -141,7 +127,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.6.3-alpha01")
+    coordinates("io.github.ismai117", "kottie", "1.6.3")
 
     pom {
         name.set(project.name)
