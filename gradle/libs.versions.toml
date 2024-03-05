@@ -12,8 +12,7 @@ compose-plugin = "1.6.0"
 dokka = "1.9.10"
 klint = "12.1.0"
 maven-publish = "0.27.0"
-#ktor = "3.0.0-wasm2"
-ktor = "2.3.9"
+ktor = "3.0.0-wasm2"
 lottie = "6.2.0"
 
 [libraries]

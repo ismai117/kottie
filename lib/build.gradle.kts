@@ -22,11 +22,11 @@ kotlin {
         binaries.executable()
     }
 
-//    @OptIn(ExperimentalWasmDsl::class)
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+        binaries.executable()
+    }
 
     iosX64()
     iosArm64()
@@ -96,9 +96,9 @@ kotlin {
             }
         }
 
-//        val wasmJsMain by getting {
-//            dependsOn(skiaMain)
-//        }
+        val wasmJsMain by getting {
+            dependsOn(skiaMain)
+        }
 
     }
 }
@@ -128,7 +128,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.6.3")
+    coordinates("io.github.ismai117", "kottie", "1.7.3-alpha01")
 
     pom {
         name.set(project.name)

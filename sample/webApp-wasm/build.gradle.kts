@@ -6,13 +6,13 @@ plugins {
 }
 
 val copyWasmResources = tasks.create("copyWasmResourcesWorkaround", Copy::class.java) {
-    from(project(":shared").file("src/commonMain/composeResources"))
+    from(project(":sample:shared").file("src/commonMain/composeResources"))
     into("build/processedResources/wasmJs/main")
 }
 
 afterEvaluate {
     project.tasks.getByName("wasmJsProcessResources").finalizedBy(copyWasmResources)
-    project.tasks.getByName("wasmJsDevelopmentExecutableCompileSync").mustRunAfter(copyWasmResources)x
+    project.tasks.getByName("wasmJsDevelopmentExecutableCompileSync").mustRunAfter(copyWasmResources)
     project.tasks.getByName("wasmJsProductionExecutableCompileSync").mustRunAfter(copyWasmResources)
 }
 
