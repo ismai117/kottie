@@ -22,11 +22,11 @@ kotlin {
         binaries.executable()
     }
 
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        browser()
-        binaries.executable()
-    }
+//    @OptIn(ExperimentalWasmDsl::class)
+//    wasmJs {
+//        browser()
+//        binaries.executable()
+//    }
 
     iosX64()
     iosArm64()
@@ -34,6 +34,7 @@ kotlin {
 
     cocoapods {
         version = "1.0"
+        ios.deploymentTarget = "17.2"
         pod("lottie-ios"){
             moduleName = "Lottie"
             extraOpts += listOf("-compiler-option", "-fmodules")
@@ -95,9 +96,9 @@ kotlin {
             }
         }
 
-        val wasmJsMain by getting {
-            dependsOn(skiaMain)
-        }
+//        val wasmJsMain by getting {
+//            dependsOn(skiaMain)
+//        }
 
     }
 }

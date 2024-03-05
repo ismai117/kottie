@@ -5,7 +5,7 @@ include(":lib")
 include(":sample:desktopApp")
 include(":sample:shared")
 include(":sample:webApp")
-include(":sample:webApp-wasm")
+//include(":sample:webApp-wasm")
 
 pluginManagement {
     repositories {

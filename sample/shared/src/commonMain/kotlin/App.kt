@@ -1,9 +1,11 @@
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import kottieComposition.KottieCompositionSpec
@@ -19,7 +21,7 @@ fun App(
 
 
     val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.File("files/Animation.json")
+        spec = KottieCompositionSpec.File("files/loading.json")
     )
 
     val animationState by animateKottieCompositionAsState(
@@ -30,6 +32,7 @@ fun App(
     MaterialTheme {
         Box(
             modifier = modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
 
             KottieAnimation(
