@@ -126,7 +126,8 @@ val animationState by animateKottieCompositionAsState(
 
 ## Observing Animation State
 
-You can observe animation state changes using LaunchedEffect.
+You can observe animation state changes:
+
 
 ```Kotlin
 LaunchedEffect(
