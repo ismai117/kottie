@@ -29,6 +29,63 @@ Add the dependency in your common module's commonMain source set
 implementation("io.github.ismai117:kottie:latest_version")
 ```
 
+Add the lottie-ios pod inside the cocoapods block
+
+```
+pod("lottie-ios") {
+    version = "4.4.0"
+    linkOnly = true
+}
+```
+
+Note: If you don't have cocoapods configured inside your project, then do the following steps:
+
+- In build.gradle (.kts) of your project, apply the CocoaPods plugin
+  ```
+  plugins {
+    kotlin("multiplatform") version "1.9.23"
+    kotlin("native.cocoapods") version "1.9.23"
+  }
+  ```
+- Configure the version, summary, homepage, deployment target, podfile, which you will add in the next step, and lastly, the lottie-ios pod in the CocoaPods block:
+  ```
+  iosX64()
+  iosArm64()
+  iosSimulatorArm64()
+
+  cocoapods {
+    summary = "Some description for the Shared Module"
+    homepage = "Link to the Shared Module homepage"
+    version = "1.0"
+    ios.deploymentTarget = "17.2"
+    podfile = project.file("../iosApp/Podfile")
+    pod("lottie-ios") {
+       version = "4.4.0"
+       linkOnly = true
+    }
+  }
+  
+  ```
+- Create the podfile for your iOS app with the following commands:
+  
+-- pod init
+== pod install
+
+- Add the following lines inside the created podfile.
+
+  ```
+  target 'iosApp' do
+    use_frameworks!
+    platform :ios, '17.2'
+  pod 'composeApp', :path => '../composeApp'
+  end
+  ```
+
+- Change the Xcode project file path from iosApp.xcodeproj to iosApp.xcworkspace.
+  ![Screenshot 2024-03-14 at 23 09 44](https://github.com/ismai117/kottie/assets/88812838/57fa0f61-e317-47de-9f62-78c16c99def4)
+
+  
+
 ## Load Animation Composition
 
 Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString).
