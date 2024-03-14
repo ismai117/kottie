@@ -84,6 +84,7 @@ Note: If you don't have cocoapods configured inside your project, then do the fo
   
   <img src="https://github.com/ismai117/kottie/assets/88812838/7a23884c-0be3-4a63-b2b5-67b9e3f0cae8" height=400>
 
+<br>
 
 ## Load Animation Composition
 
