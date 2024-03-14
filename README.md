@@ -68,8 +68,8 @@ Note: If you don't have cocoapods configured inside your project, then do the fo
   ```
 - Create the podfile for your iOS app with the following commands:
   
--- pod init
-== pod install
+- pod init
+- pod install
 
 - Add the following lines inside the created podfile.
 
