@@ -81,7 +81,8 @@ Note: If you don't have cocoapods configured inside your project, then do the fo
   ```
 
 - Change the Xcode project file path from iosApp.xcodeproj to iosApp.xcworkspace.
- <img src="https://github.com/ismai117/kottie/assets/88812838/57fa0f61-e317-47de-9f62-78c16c99def" height=400>
+ <img src="https://github.com/ismai117/kottie/assets/88812838/7a23884c-0be3-4a63-b2b5-67b9e3f0cae8" height=400>
+![cocoapods](https://github.com/ismai117/kottie/assets/88812838/7a23884c-0be3-4a63-b2b5-67b9e3f0cae8)
 
 
 ## Load Animation Composition
