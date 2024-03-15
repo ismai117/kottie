@@ -34,7 +34,7 @@ kotlin {
 
     cocoapods {
         version = "1.0"
-        ios.deploymentTarget = "17.2"
+        ios.deploymentTarget = "17.4"
         pod("lottie-ios"){
             moduleName = "Lottie"
             extraOpts += listOf("-compiler-option", "-fmodules")

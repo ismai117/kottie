@@ -27,8 +27,7 @@ actual fun animateKottieCompositionAsState(
         speed = speed,
         iterations = iterations,
         isPlaying = isPlaying,
-        restartOnPlay = restartOnPlay,
-        ignoreSystemAnimatorScale = true
+        restartOnPlay = restartOnPlay
     )
 
     LaunchedEffect(

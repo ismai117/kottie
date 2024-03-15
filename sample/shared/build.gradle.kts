@@ -31,10 +31,10 @@ kotlin {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         version = "1.0"
-        ios.deploymentTarget = "17.2"
+        ios.deploymentTarget = "17.4"
         podfile = project.file("../iosApp/Podfile")
         pod("lottie-ios") {
-            version = "4.4.0"
+            version = "4.4.1"
             linkOnly = true
         }
     }
