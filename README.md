@@ -57,7 +57,7 @@ Note: If you don't have cocoapods configured inside your project, then do the fo
     summary = "Some description for the Shared Module"
     homepage = "Link to the Shared Module homepage"
     version = "1.0"
-    ios.deploymentTarget = "17.2"
+    ios.deploymentTarget = "14.1"
     podfile = project.file("../iosApp/Podfile")
     pod("lottie-ios") {
        version = "4.4.0"
