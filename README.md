@@ -134,7 +134,9 @@ val animationState by animateKottieCompositionAsState(
 MaterialTheme {
 
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.onSurfaceVariant),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -142,8 +144,8 @@ MaterialTheme {
         KottieAnimation(
             composition = composition,
             progress = { animationState.progress },
-            modifier = modifier
-                .size(300.dp)
+            modifier = modifier.size(300.dp),
+            backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant
         )
 
         Button(
