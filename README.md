@@ -135,8 +135,7 @@ MaterialTheme {
 
     Column(
         modifier = modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.onSurfaceVariant),
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -144,8 +143,7 @@ MaterialTheme {
         KottieAnimation(
             composition = composition,
             progress = { animationState.progress },
-            modifier = modifier.size(300.dp),
-            backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant
+            modifier = modifier.size(300.dp)
         )
 
         Button(
