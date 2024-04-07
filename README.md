@@ -29,60 +29,9 @@ Add the dependency in your common module's commonMain source set
 implementation("io.github.ismai117:kottie:latest_version")
 ```
 
-Add the lottie-ios pod inside the cocoapods block
-
-```
-pod("lottie-ios") {
-    version = "4.4.0"
-    linkOnly = true
-}
-```
-
-Note: If you don't have cocoapods configured inside your project, then do the following steps:
-
-- In build.gradle (.kts) of your project, apply the CocoaPods plugin
-  ```
-  plugins {
-    kotlin("multiplatform") version "1.9.23"
-    kotlin("native.cocoapods") version "1.9.23"
-  }
-  ```
-- Configure the version, summary, homepage, deployment target, podfile, which you will add in the next step, and lastly, the lottie-ios pod in the CocoaPods block:
-  ```
-  iosX64()
-  iosArm64()
-  iosSimulatorArm64()
-
-  cocoapods {
-    summary = "Some description for the Shared Module"
-    homepage = "Link to the Shared Module homepage"
-    version = "1.0"
-    ios.deploymentTarget = "17.2"
-    podfile = project.file("../iosApp/Podfile")
-    pod("lottie-ios") {
-       version = "4.4.0"
-       linkOnly = true
-    }
-  }
-  
-  ```
-- Create the podfile for your iOS app with the following commands inside the iosApp directory:
-  - pod init
-  - pod install
-
-- Add the following lines inside the created podfile.
-
-  ```
-  target 'iosApp' do
-    use_frameworks!
-    platform :ios, '17.2'
-  pod 'composeApp', :path => '../composeApp'
-  end
-  ```
-
-- Change the Xcode project file path from iosApp.xcodeproj to iosApp.xcworkspace.
-  
-  <img src="https://github.com/ismai117/kottie/assets/88812838/7a23884c-0be3-4a63-b2b5-67b9e3f0cae8" height=400>
+In Xcode, select “File” → “Add Packages...”
+</br>
+Enter https://github.com/airbnb/lottie-spm.git
 
 <br>
 
@@ -142,8 +91,7 @@ MaterialTheme {
         KottieAnimation(
             composition = composition,
             progress = { animationState.progress },
-            modifier = modifier
-                .size(300.dp)
+            modifier = modifier.size(300.dp)
         )
 
         Button(
