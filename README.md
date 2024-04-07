@@ -30,6 +30,7 @@ implementation("io.github.ismai117:kottie:latest_version")
 ```
 
 In Xcode, select “File” → “Add Packages...”
+</br>
 Enter https://github.com/airbnb/lottie-spm.git
 
 <br>
