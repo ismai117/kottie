@@ -1,9 +1,9 @@
 import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+import org.jetbrains.kotlin.konan.target.linker
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.dokka)
@@ -28,18 +28,31 @@ kotlin {
         binaries.executable()
     }
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    cocoapods {
-        version = "1.0"
-        ios.deploymentTarget = "17.4"
-        pod("lottie-ios"){
-            moduleName = "Lottie"
-            extraOpts += listOf("-compiler-option", "-fmodules")
+    iosArm64 {
+        compilations.getByName("main") {
+            val Lottie by cinterops.creating {
+                defFile("src/nativeInterop/cinterop/Lottie.def")
+                val path = "$rootDir/vendor/Lottie.xcframework/ios-arm64"
+                compilerOpts("-F$path", "-framework", "Lottie", "-rpath", path)
+                extraOpts += listOf("-compiler-option", "-fmodules")
+            }
         }
     }
+
+    listOf(
+        iosX64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.compilations.getByName("main") {
+            val Lottie by cinterops.creating {
+                defFile("src/nativeInterop/cinterop/Lottie.def")
+                val path = "$rootDir/vendor/Lottie.xcframework/ios-arm64_x86_64-simulator"
+                compilerOpts("-F$path", "-framework", "Lottie", "-rpath", path)
+                extraOpts += listOf("-compiler-option", "-fmodules")
+            }
+        }
+    }
+
 
     sourceSets {
 
@@ -115,11 +128,11 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain(11)
     }
 }
 
@@ -128,7 +141,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.7.3-alpha01")
+    coordinates("io.github.ismai117", "kottie", "1.7.3")
 
     pom {
         name.set(project.name)

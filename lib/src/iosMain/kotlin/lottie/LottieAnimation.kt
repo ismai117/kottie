@@ -1,27 +1,32 @@
-@file:Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE", "CANNOT_OVERRIDE_INVISIBLE_MEMBER")
+@file:OptIn(
+    ExperimentalForeignApi::class
+)
+@file:Suppress(
+    "INVISIBLE_MEMBER",
+    "INVISIBLE_REFERENCE"
+)
 
 package lottie
 
 
+import Lottie.CompatibleAnimationView
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.interop.UIKitView
-import cocoapods.lottie_ios.CompatibleAnimationView
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.interop.UIKitView
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.UIKit.NSLayoutConstraint
 import platform.UIKit.UIColor
 import platform.UIKit.UIView
 
 
-@OptIn(ExperimentalForeignApi::class)
 @Composable
 fun LottieAnimation(
     modifier: Modifier,
     composition: Any?,
     progress: () -> Float,
     backgroundColor: Color,
-) {
+){
     when (composition as? CompatibleAnimationView) {
         null -> {}
         else -> {
@@ -35,6 +40,8 @@ fun LottieAnimation(
                 },
                 modifier = modifier,
                 update = { view ->
+                    view.backgroundColor =  UIColor.clearColor
+                    view.opaque = true
                     composition.translatesAutoresizingMaskIntoConstraints = false
                     view.addSubview(composition)
                     NSLayoutConstraint.activateConstraints(
@@ -48,7 +55,5 @@ fun LottieAnimation(
             )
         }
     }
-
-
-
 }
+

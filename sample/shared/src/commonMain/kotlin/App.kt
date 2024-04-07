@@ -1,5 +1,5 @@
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -31,14 +31,17 @@ fun App(
 
     MaterialTheme {
         Box(
-            modifier = modifier.fillMaxSize(),
+            modifier = modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.onSurfaceVariant),
             contentAlignment = Alignment.Center
         ) {
 
             KottieAnimation(
                 composition = composition,
                 progress = { animationState.progress },
-                modifier = modifier.size(300.dp)
+                modifier = modifier.size(300.dp),
+                backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
         }

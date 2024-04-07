@@ -28,6 +28,7 @@ kotlin {
                 implementation(project(":sample:shared"))
                 implementation(compose.html.core)
                 implementation(compose.ui)
+                implementation(compose.material3)
             }
         }
     }

@@ -1,7 +1,7 @@
 package lottie
 
 
-import cocoapods.lottie_ios.CompatibleAnimationView
+import Lottie.CompatibleAnimationView
 import kotlinx.cinterop.ExperimentalForeignApi
 
 @OptIn(ExperimentalForeignApi::class)

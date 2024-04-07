@@ -8,12 +8,10 @@
 
 import Foundation
 import UIKit
-import Lottie
 
 
 class AppDelegate : NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        LottieConfiguration.shared.renderingEngine = .mainThread
         return true
     }
 }
