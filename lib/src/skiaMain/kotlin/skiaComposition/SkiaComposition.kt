@@ -9,13 +9,10 @@ import androidx.compose.runtime.setValue
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
-import org.jetbrains.compose.resources.InternalResourceApi
-import org.jetbrains.compose.resources.readResourceBytes
 import org.jetbrains.skia.Data
 import org.jetbrains.skia.skottie.Animation
 
 
-@OptIn(InternalResourceApi::class)
 @Composable
 internal fun rememberSkiaComposition(
     spec: SkiaCompositionSpec
@@ -26,9 +23,7 @@ internal fun rememberSkiaComposition(
     LaunchedEffect(spec) {
         val animation = when (spec) {
             is SkiaCompositionSpec.File -> {
-                Animation.makeFromData(
-                    Data.makeFromBytes(readResourceBytes(spec.path))
-                )
+                if (spec.jsonString.isNotBlank()) Animation.makeFromString(spec.jsonString) else return@LaunchedEffect
             }
 
             is SkiaCompositionSpec.Url -> {
@@ -40,7 +35,7 @@ internal fun rememberSkiaComposition(
             }
 
             is SkiaCompositionSpec.JsonString -> {
-                Animation.makeFromString(spec.jsonString)
+                if (spec.jsonString.isNotBlank()) Animation.makeFromString(spec.jsonString) else return@LaunchedEffect
             }
         }
         animationState = animation

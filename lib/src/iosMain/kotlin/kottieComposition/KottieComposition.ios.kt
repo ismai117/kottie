@@ -16,7 +16,7 @@ actual fun kottieComposition(
     LaunchedEffect(spec){
         lottieSpec = when(spec){
             is KottieCompositionSpec.File -> {
-                LottieCompositionSpec.File(spec.path)
+                LottieCompositionSpec.File(spec.jsonString)
             }
             is KottieCompositionSpec.Url -> {
                 LottieCompositionSpec.Url(spec.url)

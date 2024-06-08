@@ -1,11 +1,3 @@
-@file:OptIn(
-    ExperimentalForeignApi::class
-)
-@file:Suppress(
-    "INVISIBLE_MEMBER",
-    "INVISIBLE_REFERENCE"
-)
-
 package lottie
 
 
@@ -20,6 +12,7 @@ import platform.UIKit.UIColor
 import platform.UIKit.UIView
 
 
+@OptIn(ExperimentalForeignApi::class)
 @Composable
 fun LottieAnimation(
     modifier: Modifier,
@@ -31,6 +24,7 @@ fun LottieAnimation(
         null -> {}
         else -> {
             UIKitView(
+                modifier = modifier,
                 factory = {
                     UIView().apply {
                         this.backgroundColor = UIColor.clearColor
@@ -38,20 +32,18 @@ fun LottieAnimation(
                         this.setClipsToBounds(true)
                     }
                 },
-                modifier = modifier,
-                update = { view ->
-                    view.backgroundColor =  UIColor.clearColor
-                    view.opaque = true
+                background = backgroundColor,
+                update = {
                     composition.translatesAutoresizingMaskIntoConstraints = false
-                    view.addSubview(composition)
+                    it.addSubview(composition)
+                    it.opaque = true
                     NSLayoutConstraint.activateConstraints(
                         listOf(
-                            composition.widthAnchor.constraintEqualToAnchor(view.widthAnchor),
-                            composition.heightAnchor.constraintEqualToAnchor(view.heightAnchor)
+                            composition.widthAnchor.constraintEqualToAnchor(it.widthAnchor),
+                            composition.heightAnchor.constraintEqualToAnchor(it.heightAnchor)
                         )
                     )
-                },
-                background = backgroundColor
+                }
             )
         }
     }

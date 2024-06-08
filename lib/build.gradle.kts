@@ -1,11 +1,11 @@
 import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-import org.jetbrains.kotlin.konan.target.linker
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.dokka)
     alias(libs.plugins.mavenPublish)
 }
@@ -64,6 +64,7 @@ kotlin {
                 implementation(compose.materialIconsExtended)
                 implementation(libs.ktor.client.core)
                 implementation(compose.components.resources)
+                implementation(libs.kotlinx.coroutines.core)
             }
         }
 
@@ -74,8 +75,6 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 api(libs.androidx.activityCompose)
-                api(libs.androidx.appcompat)
-                api(libs.androidx.core.ktx)
                 implementation(libs.androidLottie)
                 implementation(libs.ktor.client.android)
             }
@@ -128,11 +127,8 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlin {
-        jvmToolchain(11)
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
@@ -141,7 +137,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.7.3")
+    coordinates("io.github.ismai117", "kottie", "1.9.6-alpha01")
 
     pom {
         name.set(project.name)

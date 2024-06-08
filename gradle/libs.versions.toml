@@ -1,41 +1,41 @@
 [versions]
 agp = "8.2.2"
-kotlin = "1.9.23"
+kotlin = "2.0.0"
 android-compileSdk= "34"
 android-minSdk= "24"
 android-targetSdk= "34"
-androidx-activityCompose = "1.8.2"
-androidx-appcompat = "1.6.1"
-androidx-core-ktx = "1.12.0"
-compose = "1.6.5"
-compose-plugin = "1.6.1"
-dokka = "1.9.10"
+androidx-activityCompose = "1.9.0"
+androidx-appcompat = "1.7.0"
+androidx-core-ktx = "1.13.1"
+compose = "1.6.7"
+compose-plugin = "1.6.10"
+dokka = "1.9.20"
 klint = "12.1.0"
 maven-publish = "0.27.0"
 ktor = "3.0.0-wasm2"
 lottie = "6.4.0"
+kotlinx-coroutines = "1.9.0-RC"
 
 [libraries]
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
 androidx-core-ktx = { group = "androidx.core",name = "core-ktx", version.ref = "androidx-core-ktx" }
-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 androidLottie = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 
-ktor = { group = "io.ktor", name = "ktor", version.ref = "ktor" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
 ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
 ktor-client-java = { group = "io.ktor", name = "ktor-client-java", version.ref = "ktor" }
 ktor-client-js = { group = "io.ktor", name = "ktor-client-js", version.ref = "ktor" }
 
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "klint" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }

@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -35,6 +36,7 @@ kotlin {
 
 
     sourceSets {
+
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
@@ -75,7 +77,6 @@ kotlin {
     }
 }
 
-
 android {
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     namespace = "com.myapplication.common"
@@ -90,9 +91,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlin {
-        jvmToolchain(11)
     }
 }
 

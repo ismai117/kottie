@@ -4,7 +4,6 @@ import androidx.compose.ui.Modifier
 import com.airbnb.lottie.LottieComposition
 import com.airbnb.lottie.compose.LottieAnimation
 
-
 @Composable
 actual fun KottieAnimation(
     modifier: Modifier,

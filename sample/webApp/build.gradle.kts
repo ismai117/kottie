@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.compose.compiler)
 }
 
 val copyJsResources = tasks.create("copyJsResourcesWorkaround", Copy::class.java) {
@@ -12,7 +13,6 @@ val copyJsResources = tasks.create("copyJsResourcesWorkaround", Copy::class.java
 
 afterEvaluate {
     project.tasks.getByName("jsProcessResources").finalizedBy(copyJsResources)
-    project.tasks.getByName("jsBrowserProductionExecutableDistributeResources").mustRunAfter(copyJsResources)
     project.tasks.getByName("jsDevelopmentExecutableCompileSync").mustRunAfter(copyJsResources)
     project.tasks.getByName("jsProductionExecutableCompileSync").mustRunAfter(copyJsResources)
 }
