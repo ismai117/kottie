@@ -6,10 +6,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.ktor.client.HttpClient
-import io.ktor.client.request.get
-import io.ktor.client.statement.bodyAsText
-import org.jetbrains.skia.Data
 import org.jetbrains.skia.skottie.Animation
 
 
@@ -27,11 +23,7 @@ internal fun rememberSkiaComposition(
             }
 
             is SkiaCompositionSpec.Url -> {
-                val httpClient = HttpClient()
-                val data = httpClient.get(spec.url)
-                Animation.makeFromData(
-                    Data.makeFromBytes(data.bodyAsText().encodeToByteArray())
-                )
+                Animation.makeFromString(getAnimation(url = spec.url))
             }
 
             is SkiaCompositionSpec.JsonString -> {
@@ -43,3 +35,4 @@ internal fun rememberSkiaComposition(
     return animationState
 }
 
+expect suspend fun getAnimation(url: String): String

@@ -62,7 +62,6 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.material3)
                 implementation(compose.materialIconsExtended)
-                implementation(libs.ktor.client.core)
                 implementation(compose.components.resources)
                 implementation(libs.kotlinx.coroutines.core)
             }
@@ -76,7 +75,6 @@ kotlin {
             dependencies {
                 api(libs.androidx.activityCompose)
                 implementation(libs.androidLottie)
-                implementation(libs.ktor.client.android)
             }
         }
 
@@ -85,27 +83,22 @@ kotlin {
         val iosSimulatorArm64Main by getting
 
         val iosMain by creating {
-            dependsOn(skiaMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependsOn(commonMain)
             dependencies {
+                implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.darwin)
             }
         }
 
         val jvmMain by getting {
             dependsOn(skiaMain)
-            dependencies {
-                implementation(libs.ktor.client.java)
-            }
         }
 
         val jsMain by getting {
             dependsOn(skiaMain)
-            dependencies {
-                implementation(libs.ktor.client.js)
-            }
         }
 
         val wasmJsMain by getting {
@@ -137,7 +130,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.9.6-alpha01")
+    coordinates("io.github.ismai117", "kottie", "1.9.6-alpha02")
 
     pom {
         name.set(project.name)

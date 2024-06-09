@@ -29,9 +29,7 @@ fun App(
 ) {
 
     val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.File(
-            kottieReadBytes("files/people.json")
-        )
+        spec = KottieCompositionSpec.Url("https://lottie.host/0094976a-6a83-4795-b0ce-6da075ca5b6b/HSbPWOOaJV.json")
     )
 
     val animationState by animateKottieCompositionAsState(
