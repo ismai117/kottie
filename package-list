@@ -18,4 +18,5 @@ kottieComposition
 lottie
 lottie.animateLottieCompositionAsState
 lottie.lottieComposition
+skiaComposition
 utils
