@@ -40,8 +40,15 @@ Enter https://github.com/airbnb/lottie-spm.git
 Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString).
 
 ```Kotlin
+
+var animation by remember { mutableStateOf("") }
+
+LaunchedEffect(Unit){
+    animation = Res.readBytes("files/animation.json").decodeToString()
+}
+
 val composition = rememberKottieComposition(
-    spec = KottieCompositionSpec.File("files/Animation.json") // Or KottieCompositionSpec.Url || KottieCompositionSpec.JsonString
+    spec = KottieCompositionSpec.File(animation) // Or KottieCompositionSpec.Url || KottieCompositionSpec.JsonString
 )
 ```
 
