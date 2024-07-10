@@ -61,9 +61,9 @@ kotlin {
                 implementation(compose.ui)
                 implementation(compose.foundation)
                 implementation(compose.material3)
-                implementation(compose.materialIconsExtended)
                 implementation(compose.components.resources)
                 implementation(libs.kotlinx.coroutines.core)
+                implementation("org.jetbrains.skiko:skiko:0.8.5")
             }
         }
 
@@ -90,6 +90,7 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.darwin)
+                runtimeOnly("org.jetbrains.skiko:skiko-awt-runtime-macos-x64:0.8.4")
             }
         }
 

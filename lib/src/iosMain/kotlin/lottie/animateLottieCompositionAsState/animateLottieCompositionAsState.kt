@@ -1,7 +1,10 @@
 package lottie.animateLottieCompositionAsState
 
 
+import Lottie.AnimatedButton.Companion.setAnimationRepeatAutoreverses
+import Lottie.CompatibleAnimation
 import Lottie.CompatibleAnimationView
+import Lottie.LottieAnimationView
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -19,8 +22,10 @@ fun animateLottieCompositionAsState(
     composition: CompatibleAnimationView?,
     isPlaying: Boolean = true,
     restartOnPlay: Boolean = true,
+    reverseOnRepeat: Boolean = false,
     speed: Float = 1f,
-    iterations: Int = 1
+    iterations: Int = 1,
+    useCompositionFrameRate: Boolean = false,
 ): LottieAnimationState {
 
     require(iterations > 0) { "Iterations must be a positive number ($iterations)." }
@@ -31,28 +36,27 @@ fun animateLottieCompositionAsState(
 
     val progress = remember { mutableStateOf(0.0f) }
 
-
-
     LaunchedEffect(
         composition,
         isPlaying,
         speed,
         iterations
     ) {
-        when (val animation = composition) {
+        when (composition) {
             null -> {}
             else -> {
 
-                if (isPlaying && !wasPlaying && restartOnPlay){
-                    animation.setCurrentProgress(0.0)
+                if (isPlaying && !wasPlaying && restartOnPlay) {
+                    composition.setCurrentProgress(0.0)
                 }
 
                 wasPlaying = isPlaying
                 if (!isPlaying) return@LaunchedEffect
 
-                animation.setLoopAnimationCount(iterations.toDouble())
-                animation.setAnimationSpeed(speed.toDouble())
-                animation.play()
+                composition.setRespectAnimationFrameRate(useCompositionFrameRate)
+                composition.setLoopAnimationCount(iterations.toDouble())
+                composition.setAnimationSpeed(speed.toDouble())
+                composition.play()
 
             }
         }
@@ -62,11 +66,8 @@ fun animateLottieCompositionAsState(
         composition?.realtimeAnimationProgress()?.toFloat(),
         isPlaying
     ){
-
         delay(100)
-
         progress.value = composition?.realtimeAnimationProgress()?.toFloat() ?: 0.0f
-
     }
 
     LaunchedEffect(
@@ -92,3 +93,4 @@ fun animateLottieCompositionAsState(
     return lottieAnimationState.value
 
 }
+

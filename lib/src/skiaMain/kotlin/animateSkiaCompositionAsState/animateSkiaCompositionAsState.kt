@@ -21,10 +21,12 @@ import kotlin.math.roundToInt
 @Composable
 fun animateSkiaCompositionAsState(
     composition: Animation?,
+    isPlaying: Boolean = true,
+    restartOnPlay: Boolean = true,
+    reverseOnRepeat: Boolean = false,
     speed: Float = 1f,
     iterations: Int = 1,
-    isPlaying: Boolean = true,
-    restartOnPlay: Boolean = true
+    useCompositionFrameRate: Boolean = false,
 ): State<SkiaAnimationState>{
 
     require(iterations > 0) { "Iterations must be a positive number ($iterations)." }

@@ -1,11 +1,13 @@
 package lottie.lottieComposition
 
+import Lottie.CompatibleAnimation
 import Lottie.CompatibleAnimationView
 import Lottie.CompatibleRenderingEngineOptionAutomatic
 import Lottie.CompatibleRenderingEngineOptionCoreAnimation
 import Lottie.CompatibleRenderingEngineOptionDefaultEngine
 import Lottie.CompatibleRenderingEngineOptionMainThread
 import Lottie.CompatibleRenderingEngineOptionShared
+import Lottie.LottieAnimationView
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -45,8 +47,7 @@ internal fun rememberLottieComposition(
         val animation = when (spec) {
             is LottieCompositionSpec.File -> {
                 CompatibleAnimationView(
-                    data = spec.jsonString.encodeToByteArray().toNSData(),
-                    compatibleRenderingEngineOption = CompatibleRenderingEngineOptionAutomatic
+                    data = spec.jsonString.encodeToByteArray().toNSData()
                 )
             }
 
@@ -54,15 +55,13 @@ internal fun rememberLottieComposition(
                 val httpClient = HttpClient()
                 val data = httpClient.get(spec.url)
                 CompatibleAnimationView(
-                    data = data.readBytes().toNSData(),
-                    compatibleRenderingEngineOption = CompatibleRenderingEngineOptionAutomatic
+                    data = data.readBytes().toNSData()
                 )
             }
 
             is LottieCompositionSpec.JsonString -> {
                 CompatibleAnimationView(
-                    data = spec.jsonString.encodeToByteArray().toNSData(),
-                    compatibleRenderingEngineOption = CompatibleRenderingEngineOptionAutomatic
+                    data = spec.jsonString.encodeToByteArray().toNSData()
                 )
             }
 

@@ -14,18 +14,22 @@ import lottie.animateLottieCompositionAsState.animateLottieCompositionAsState
 @Composable
 actual fun animateKottieCompositionAsState(
     composition: Any?,
-    speed: Float,
-    iterations: Int,
     isPlaying: Boolean,
-    restartOnPlay: Boolean
+    restartOnPlay: Boolean,
+    reverseOnRepeat: Boolean ,
+    speed: Float ,
+    iterations: Int,
+    useCompositionFrameRate: Boolean,
 ): State<KottieAnimationState> {
     val kottieAnimationState = remember { mutableStateOf(KottieAnimationState()) }
     val animationState = animateLottieCompositionAsState(
         composition = composition as? CompatibleAnimationView,
+        isPlaying = isPlaying,
+        restartOnPlay = restartOnPlay,
+        reverseOnRepeat = reverseOnRepeat,
         speed = speed,
         iterations = iterations,
-        isPlaying = isPlaying,
-        restartOnPlay = restartOnPlay
+        useCompositionFrameRate = useCompositionFrameRate
     )
     LaunchedEffect(
         animationState.progress

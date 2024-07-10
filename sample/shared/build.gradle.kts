@@ -32,7 +32,17 @@ kotlin {
             baseName = "shared"
             isStatic = true
         }
+        iosTarget.compilations.getByName("main"){
+            cinterops.create("observer") {
+                val path = projectDir.resolve("src/nativeInterop/cinterop/observer")
+                iosTarget.binaries.all {
+                    linkerOpts("-F $path")
+                    linkerOpts("-ObjC")
+                }
+            }
+        }
     }
+
 
 
     sourceSets {
