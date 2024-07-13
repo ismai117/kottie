@@ -1,15 +1,30 @@
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.requiredSizeIn
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import contentScale.ContentScale
 
 
 @Composable
-expect fun KottieAnimation(
-    modifier: Modifier,
+fun KottieAnimation(
+    modifier: Modifier = Modifier,
     composition: Any?,
     progress: () -> Float,
     backgroundColor: Color = Color.Transparent,
-    contentScale: ContentScale = ContentScale.Fit
-)
+    contentScale: ContentScale = ContentScale.Fit,
+    clipToCompositionBounds: Boolean = true,
+) {
+    kottieAnimation.KottieAnimation(
+        modifier = modifier.sizeIn(minWidth = 140.dp, minHeight = 140.dp),
+        composition = composition,
+        progress = progress,
+        backgroundColor = backgroundColor,
+        contentScale = contentScale,
+        clipToCompositionBounds = clipToCompositionBounds
+    )
+}

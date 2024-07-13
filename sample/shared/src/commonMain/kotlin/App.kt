@@ -1,8 +1,10 @@
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -13,6 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import contentScale.ContentScale
 import kottie.sample.shared.generated.resources.Res
 import kottieComposition.KottieCompositionSpec
@@ -31,7 +34,7 @@ fun App(
     var animation by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit){
-        animation = Res.readBytes("files/splash.json").decodeToString()
+        animation = Res.readBytes("files/animation.json").decodeToString()
     }
 
     val composition = rememberKottieComposition(
@@ -46,16 +49,16 @@ fun App(
     MaterialTheme {
         Box(
             modifier = modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .background(Color.Red),
             contentAlignment = Alignment.Center
         ) {
 
             KottieAnimation(
                 composition = composition,
                 progress = { animationState.progress },
-                modifier = Modifier
-                    .fillMaxSize(),
-                contentScale = ContentScale.Crop
+                modifier = modifier
+                    .fillMaxWidth()
             )
 
         }

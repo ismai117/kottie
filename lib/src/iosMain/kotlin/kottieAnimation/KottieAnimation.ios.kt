@@ -1,3 +1,5 @@
+package kottieAnimation
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -10,14 +12,16 @@ actual fun KottieAnimation(
     composition: Any?,
     progress: () -> Float,
     backgroundColor: Color,
-    contentScale: ContentScale
+    contentScale: ContentScale,
+    clipToCompositionBounds: Boolean
 ) {
     LottieAnimation(
         composition = composition,
         progress = { progress() },
         modifier = modifier,
         backgroundColor = backgroundColor,
-        contentScale = contentScale
+        contentScale = contentScale,
+        clipToCompositionBounds = clipToCompositionBounds
     )
 }
 

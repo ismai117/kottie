@@ -34,6 +34,7 @@ actual fun animateKottieCompositionAsState(
         useCompositionFrameRate = useCompositionFrameRate
     )
 
+    println("height: ${animationState.composition?.bounds}")
 
     LaunchedEffect(
         animationState.progress

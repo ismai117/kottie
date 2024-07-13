@@ -1,4 +1,5 @@
-import android.widget.ImageView.ScaleType
+package kottieAnimation
+
 import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,7 +14,8 @@ actual fun KottieAnimation(
     composition: Any?,
     progress: () -> Float,
     backgroundColor: Color,
-    contentScale: ContentScale
+    contentScale: ContentScale,
+    clipToCompositionBounds: Boolean
 ) {
 
     val scaleType = when(contentScale){
@@ -25,9 +27,9 @@ actual fun KottieAnimation(
     LottieAnimation(
         composition = composition as? LottieComposition,
         progress = { progress() },
-        modifier = modifier
-            .background(backgroundColor),
-        contentScale = scaleType
+        modifier = modifier.background(backgroundColor),
+        contentScale = scaleType,
+        clipToCompositionBounds = clipToCompositionBounds
     )
 
 }

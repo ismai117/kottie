@@ -21,7 +21,8 @@ internal fun SkiaAnimation(
     composition: Any?,
     progress: () -> Float,
     backgroundColor: Color,
-    contentScale: ContentScale
+    contentScale: ContentScale,
+    clipToCompositionBounds: Boolean
 ) {
     val invalidationController = remember { InvalidationController() }
     when (val animation = composition as? Animation) {

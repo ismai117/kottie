@@ -63,7 +63,6 @@ kotlin {
                 implementation(compose.material3)
                 implementation(compose.components.resources)
                 implementation(libs.kotlinx.coroutines.core)
-                implementation("org.jetbrains.skiko:skiko:0.8.5")
             }
         }
 
@@ -90,7 +89,6 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.darwin)
-                runtimeOnly("org.jetbrains.skiko:skiko-awt-runtime-macos-x64:0.8.4")
             }
         }
 
@@ -131,7 +129,7 @@ mavenPublishing {
     // or when publishing to https://s01.oss.sonatype.org
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.9.6-alpha02")
+    coordinates("io.github.ismai117", "kottie", "1.9.6")
 
     pom {
         name.set(project.name)
