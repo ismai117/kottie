@@ -1,10 +1,7 @@
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -15,15 +12,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import contentScale.ContentScale
 import kottie.sample.shared.generated.resources.Res
 import kottieComposition.KottieCompositionSpec
 import kottieComposition.animateKottieCompositionAsState
 import kottieComposition.rememberKottieComposition
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import utils.KottieConstants
-
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -42,8 +35,7 @@ fun App(
     )
 
     val animationState by animateKottieCompositionAsState(
-        composition = composition,
-        iterations = KottieConstants.IterateForever
+        composition = composition
     )
 
     MaterialTheme {
@@ -57,8 +49,7 @@ fun App(
             KottieAnimation(
                 composition = composition,
                 progress = { animationState.progress },
-                modifier = modifier
-                    .fillMaxWidth()
+                modifier = modifier.fillMaxWidth()
             )
 
         }

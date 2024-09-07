@@ -1,10 +1,8 @@
 package lottie.animateLottieCompositionAsState
 
 
-import Lottie.AnimatedButton.Companion.setAnimationRepeatAutoreverses
-import Lottie.CompatibleAnimation
 import Lottie.CompatibleAnimationView
-import Lottie.LottieAnimationView
+import Lottie.CompatibleAnimationView.Companion.setAnimationRepeatAutoreverses
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -14,6 +12,8 @@ import androidx.compose.runtime.setValue
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.delay
 import lottie.LottieAnimationState
+import platform.darwin.nil
+import utils.KottieConstants
 
 
 @OptIn(ExperimentalForeignApi::class)
@@ -36,6 +36,8 @@ fun animateLottieCompositionAsState(
 
     val progress = remember { mutableStateOf(0.0f) }
 
+    var currentIteration by remember { mutableStateOf(0) }
+
     LaunchedEffect(
         composition,
         isPlaying,
@@ -54,18 +56,52 @@ fun animateLottieCompositionAsState(
                 if (!isPlaying) return@LaunchedEffect
 
                 composition.setRespectAnimationFrameRate(useCompositionFrameRate)
-                composition.setLoopAnimationCount(iterations.toDouble())
                 composition.setAnimationSpeed(speed.toDouble())
-                composition.play()
+
+                if (reverseOnRepeat){
+                    when {
+                        iterations == 1 -> {
+                            composition.playWithCompletion { completed ->
+                                if (completed){
+                                    composition.playFromProgress(1.0, 0.0, null)
+                                }
+                            }
+                        }
+                        else -> {
+
+                            fun loopForwardAndBackward() {
+                                composition.playFromProgress(0.0, 1.0, completion = { forwardCompleted ->
+                                    if (forwardCompleted) {
+                                        composition.playFromProgress(1.0, 0.0, completion = { backwardCompleted ->
+                                            if (backwardCompleted) {
+                                                currentIteration++
+                                                if (currentIteration < iterations || iterations == KottieConstants.IterateForever){
+                                                    loopForwardAndBackward()
+                                                }
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+
+                            loopForwardAndBackward()
+
+                        }
+                    }
+                } else {
+                    composition.setLoopAnimationCount(iterations.toDouble())
+                    composition.play()
+                }
 
             }
+
         }
     }
 
     LaunchedEffect(
         composition?.realtimeAnimationProgress()?.toFloat(),
         isPlaying
-    ){
+    ) {
         delay(100)
         progress.value = composition?.realtimeAnimationProgress()?.toFloat() ?: 0.0f
     }
@@ -93,5 +129,3 @@ fun animateLottieCompositionAsState(
     return lottieAnimationState.value
 
 }
-
-
