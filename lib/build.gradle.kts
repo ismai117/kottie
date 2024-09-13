@@ -126,9 +126,9 @@ android {
 mavenPublishing {
 //    publishToMavenCentral(SonatypeHost.DEFAULT)
     // or when publishing to https://s01.oss.sonatype.org
-    publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "1.9.6")
+    coordinates("io.github.ismai117", "kottie", "2.0.0")
 
     pom {
         name.set(project.name)

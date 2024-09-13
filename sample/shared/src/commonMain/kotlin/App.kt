@@ -17,6 +17,7 @@ import kottieComposition.KottieCompositionSpec
 import kottieComposition.animateKottieCompositionAsState
 import kottieComposition.rememberKottieComposition
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import utils.KottieConstants
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -35,7 +36,9 @@ fun App(
     )
 
     val animationState by animateKottieCompositionAsState(
-        composition = composition
+        composition = composition,
+        iterations = KottieConstants.IterateForever,
+        reverseOnRepeat = true
     )
 
     MaterialTheme {

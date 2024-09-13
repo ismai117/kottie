@@ -1,24 +1,14 @@
 package lottie
 
 import Lottie.CompatibleAnimationView
-import Lottie.LottieAnimationView
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.interop.UIKitView
-import androidx.compose.ui.unit.dp
 import contentScale.ContentScale
 import kotlinx.cinterop.ExperimentalForeignApi
-import kotlinx.cinterop.useContents
-import kotlinx.cinterop.usePinned
 import platform.UIKit.NSLayoutConstraint
 import platform.UIKit.UIColor
-import platform.UIKit.UILayoutPriorityDefaultLow
 import platform.UIKit.UIView
 import platform.UIKit.UIViewContentMode
 
@@ -43,8 +33,7 @@ fun LottieAnimation(
                 ContentScale.FillBounds -> UIViewContentMode.UIViewContentModeScaleToFill
             }
 
-            UIKitView(
-                modifier = modifier,
+            androidx.compose.ui.viewinterop.UIKitView(
                 factory = {
                     UIView().apply {
                         this.backgroundColor = UIColor.clearColor
@@ -52,7 +41,7 @@ fun LottieAnimation(
                         this.clipsToBounds = clipToCompositionBounds
                     }
                 },
-                background = backgroundColor,
+                modifier = modifier.background(backgroundColor),
                 update = { view ->
 
                     composition.translatesAutoresizingMaskIntoConstraints = false
