@@ -1,18 +1,14 @@
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -20,7 +16,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -54,7 +49,7 @@ fun App(
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold
             )
-            
+
             ExampleCard(
                 title = "1. File Loading",
                 content = { FileLoadingExample() }
@@ -64,7 +59,7 @@ fun App(
                 title = "2. URL Loading",
                 content = { UrlLoadingExample() }
             )
-            
+
             ExampleCard(
                 title = "3. Valid JSON String",
                 content = { ValidJsonExample() }
@@ -78,7 +73,6 @@ fun AnimationExample(
     composition: kottieComposition.KottieCompositionResult,
     reverseOnRepeat: Boolean = false,
     errorMessage: String = "Error",
-    description: String? = null,
     showErrorDetails: Boolean = false,
     customFailedContent: (@Composable () -> Unit)? = null
 ) {
@@ -93,7 +87,7 @@ fun AnimationExample(
         verticalAlignment = Alignment.CenterVertically
     ) {
         StatusIndicator(composition)
-        
+
         Box(
             modifier = Modifier.size(100.dp),
             contentAlignment = Alignment.Center
@@ -102,6 +96,7 @@ fun AnimationExample(
                 composition.isLoading -> {
                     CircularProgressIndicator()
                 }
+
                 composition.isSuccess -> {
                     KottieAnimation(
                         composition = composition,
@@ -109,6 +104,7 @@ fun AnimationExample(
                         modifier = Modifier.fillMaxSize()
                     )
                 }
+
                 composition.isFailed -> {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
@@ -125,12 +121,13 @@ fun AnimationExample(
                 }
             }
         }
-        
+
         // Custom content for different states
         when {
             composition.isFailed && customFailedContent != null -> {
                 customFailedContent()
             }
+
             composition.isFailed && showErrorDetails -> {
                 Column {
                     Text(
@@ -144,13 +141,6 @@ fun AnimationExample(
                         color = Color.Red
                     )
                 }
-            }
-            description != null -> {
-                Text(
-                    text = description,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.weight(1f)
-                )
             }
         }
     }
@@ -247,7 +237,6 @@ fun ValidJsonExample() {
 
     AnimationExample(
         composition = composition,
-        description = "Simple rotating blue square animation from JSON string"
     )
 }
 
@@ -269,6 +258,7 @@ fun StatusIndicator(composition: kottieComposition.KottieCompositionResult) {
                     style = MaterialTheme.typography.bodySmall
                 )
             }
+
             composition.isSuccess -> {
                 Text(
                     text = "🟢",
@@ -279,6 +269,7 @@ fun StatusIndicator(composition: kottieComposition.KottieCompositionResult) {
                     style = MaterialTheme.typography.bodySmall
                 )
             }
+
             composition.isFailed -> {
                 Text(
                     text = "🔴",
