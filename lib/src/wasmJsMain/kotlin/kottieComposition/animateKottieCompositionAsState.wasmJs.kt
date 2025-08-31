@@ -13,7 +13,7 @@ import org.jetbrains.skia.skottie.Animation
 
 @Composable
 actual fun animateKottieCompositionAsState(
-    composition: Any?,
+    composition: KottieCompositionResult,
     isPlaying: Boolean,
     restartOnPlay: Boolean,
     reverseOnRepeat: Boolean ,
@@ -25,8 +25,8 @@ actual fun animateKottieCompositionAsState(
     val kottieAnimationState = remember { mutableStateOf(KottieAnimationState()) }
 
     val animationState by animateSkiaCompositionAsState(
-        composition = composition as? Animation,
-        isPlaying = isPlaying,
+        composition = composition.value as? Animation,
+        isPlaying = isPlaying && composition.isSuccess,
         restartOnPlay = restartOnPlay,
         reverseOnRepeat = reverseOnRepeat,
         speed = speed,

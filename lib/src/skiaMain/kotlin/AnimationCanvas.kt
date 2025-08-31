@@ -11,11 +11,14 @@ internal fun Modifier.drawAnimationOnCanvas(
     time: Float,
     invalidationController: InvalidationController
 ): Modifier = this then drawWithContent {
+    drawContent()
     drawIntoCanvas { canvas ->
-        animation?.seekFrameTime(time, invalidationController)
-        animation?.render(
-            canvas = canvas.nativeCanvas,
-            dst = Rect.makeWH(size.width, size.height)
-        )
+        animation?.let { anim ->
+            anim.seekFrameTime(time, invalidationController)
+            anim.render(
+                canvas = canvas.nativeCanvas,
+                dst = Rect.makeWH(size.width, size.height)
+            )
+        }
     }
 }
