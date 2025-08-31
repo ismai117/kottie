@@ -168,7 +168,7 @@ fun FileLoadingExample() {
 @Composable
 fun UrlLoadingExample() {
     val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.Url("https://assets3.lottiefiles.com/packages/lf20_V9t630.json")
+        spec = KottieCompositionSpec.Url("https://lottie.host/4cd47dc2-c1ae-4d46-b908-2df421fa26ca/PdsqGQXLt0.json")
     )
 
     AnimationExample(
