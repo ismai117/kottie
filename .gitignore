@@ -14,3 +14,4 @@ sample/iosApp/iosApp.xcodeproj/*
 !sample/iosApp/iosApp.xcodeproj/project.pbxproj
 shared/shared.podspec
 gradle.properties
+.kotlin
