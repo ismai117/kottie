@@ -17,6 +17,9 @@ subprojects {
     // Optionally configure plugin
     configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
         version.set("1.0.1")
+        filter {
+            exclude("**/generated/**")
+        }
     }
 }
 
