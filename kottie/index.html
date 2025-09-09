@@ -1,0 +1,374 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>kottie</title>
+<link href="../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../scripts/sourceset_dependencies.js" async></script>
+<link href="../styles/style.css" rel="Stylesheet">
+<link href="../styles/main.css" rel="Stylesheet">
+<link href="../styles/prism.css" rel="Stylesheet">
+<link href="../styles/logo-styles.css" rel="Stylesheet">
+<link href="../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../scripts/main.js" defer></script>
+<script type="text/javascript" src="../scripts/prism.js" async></script>
+<script type="text/javascript" src="../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../index.html">
+                    Kottie
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":kottie:dokkaHtmlPartial/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":kottie:dokkaHtmlPartial/commonMain">common</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":kottie:dokkaHtmlPartial/iosMain">ios</button>
+                <button class="platform-tag platform-selector js-like" data-active="" data-filter=":kottie:dokkaHtmlPartial/jsMain">js</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":kottie:dokkaHtmlPartial/jvmMain">jvm</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":kottie:dokkaHtmlPartial/skiaMain">skia</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" data-filter=":kottie:dokkaHtmlPartial/wasmJsMain">wasmJs</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kottie:dokkaHtmlPartial/androidMain" data-filter=":kottie:dokkaHtmlPartial/androidMain">
+                                <span class="checkbox--icon"></span>
+                                android
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kottie:dokkaHtmlPartial/commonMain" data-filter=":kottie:dokkaHtmlPartial/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kottie:dokkaHtmlPartial/iosMain" data-filter=":kottie:dokkaHtmlPartial/iosMain">
+                                <span class="checkbox--icon"></span>
+                                ios
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kottie:dokkaHtmlPartial/jsMain" data-filter=":kottie:dokkaHtmlPartial/jsMain">
+                                <span class="checkbox--icon"></span>
+                                js
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kottie:dokkaHtmlPartial/jvmMain" data-filter=":kottie:dokkaHtmlPartial/jvmMain">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kottie:dokkaHtmlPartial/skiaMain" data-filter=":kottie:dokkaHtmlPartial/skiaMain">
+                                <span class="checkbox--icon"></span>
+                                skia
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kottie:dokkaHtmlPartial/wasmJsMain" data-filter=":kottie:dokkaHtmlPartial/wasmJsMain">
+                                <span class="checkbox--icon"></span>
+                                wasmJs
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kottie
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" id="content" pageids="kottie::////PointingToDeclaration//-20559728">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>kottie</span></span></h1>
+  </div>
+  <h2 class="">Packages</h2>
+  <div class="table"><a data-name="-1999595294%2FPackages%2F674906060" anchor-label="[root]" id="-1999595294%2FPackages%2F674906060" data-filterable-set=":kottie:dokkaHtmlPartial/commonMain,:kottie:dokkaHtmlPartial/skiaMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/commonMain,:kottie:dokkaHtmlPartial/skiaMain" data-filterable-set=":kottie:dokkaHtmlPartial/commonMain,:kottie:dokkaHtmlPartial/skiaMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="[root]/index.html">[root]</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1999595294%2FPackages%2F674906060"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+              <div class="platform-tag common-like">skia</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1692939688%2FPackages%2F-1844526029" anchor-label="animateSkiaCompositionAsState" id="1692939688%2FPackages%2F-1844526029" data-filterable-set=":kottie:dokkaHtmlPartial/skiaMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/skiaMain" data-filterable-set=":kottie:dokkaHtmlPartial/skiaMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="animateSkiaCompositionAsState/index.html">animateSkiaCompositionAsState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1692939688%2FPackages%2F-1844526029"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">skia</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="196128243%2FPackages%2F1134073107" anchor-label="contentScale" id="196128243%2FPackages%2F1134073107" data-filterable-set=":kottie:dokkaHtmlPartial/commonMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/commonMain" data-filterable-set=":kottie:dokkaHtmlPartial/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="contentScale/index.html">contentScale</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="196128243%2FPackages%2F1134073107"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1657276486%2FPackages%2F-1231477682" anchor-label="kottieAnimation" id="1657276486%2FPackages%2F-1231477682" data-filterable-set=":kottie:dokkaHtmlPartial/androidMain,:kottie:dokkaHtmlPartial/iosMain,:kottie:dokkaHtmlPartial/jsMain,:kottie:dokkaHtmlPartial/jvmMain,:kottie:dokkaHtmlPartial/wasmJsMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/androidMain,:kottie:dokkaHtmlPartial/iosMain,:kottie:dokkaHtmlPartial/jsMain,:kottie:dokkaHtmlPartial/jvmMain,:kottie:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":kottie:dokkaHtmlPartial/androidMain,:kottie:dokkaHtmlPartial/iosMain,:kottie:dokkaHtmlPartial/jsMain,:kottie:dokkaHtmlPartial/jvmMain,:kottie:dokkaHtmlPartial/wasmJsMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="kottieAnimation/index.html">kottieAnimation</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1657276486%2FPackages%2F-1231477682"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">android</div>
+              <div class="platform-tag common-like">ios</div>
+              <div class="platform-tag js-like">js</div>
+              <div class="platform-tag jvm-like">jvm</div>
+              <div class="platform-tag wasm-like">wasmJs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-562405073%2FPackages%2F1134073107" anchor-label="kottieAnimationState" id="-562405073%2FPackages%2F1134073107" data-filterable-set=":kottie:dokkaHtmlPartial/commonMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/commonMain" data-filterable-set=":kottie:dokkaHtmlPartial/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="kottieAnimationState/index.html">kottieAnimationState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-562405073%2FPackages%2F1134073107"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1256078060%2FPackages%2F-1732961219" anchor-label="kottieComposition" id="1256078060%2FPackages%2F-1732961219" data-filterable-set=":kottie:dokkaHtmlPartial/androidMain,:kottie:dokkaHtmlPartial/commonMain,:kottie:dokkaHtmlPartial/iosMain,:kottie:dokkaHtmlPartial/jsMain,:kottie:dokkaHtmlPartial/jvmMain,:kottie:dokkaHtmlPartial/wasmJsMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/androidMain,:kottie:dokkaHtmlPartial/commonMain,:kottie:dokkaHtmlPartial/iosMain,:kottie:dokkaHtmlPartial/jsMain,:kottie:dokkaHtmlPartial/jvmMain,:kottie:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":kottie:dokkaHtmlPartial/androidMain,:kottie:dokkaHtmlPartial/commonMain,:kottie:dokkaHtmlPartial/iosMain,:kottie:dokkaHtmlPartial/jsMain,:kottie:dokkaHtmlPartial/jvmMain,:kottie:dokkaHtmlPartial/wasmJsMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="kottieComposition/index.html">kottieComposition</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1256078060%2FPackages%2F-1732961219"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">android</div>
+              <div class="platform-tag common-like">common</div>
+              <div class="platform-tag common-like">ios</div>
+              <div class="platform-tag js-like">js</div>
+              <div class="platform-tag jvm-like">jvm</div>
+              <div class="platform-tag wasm-like">wasmJs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="2000900033%2FPackages%2F-2143191621" anchor-label="lottie" id="2000900033%2FPackages%2F-2143191621" data-filterable-set=":kottie:dokkaHtmlPartial/iosMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/iosMain" data-filterable-set=":kottie:dokkaHtmlPartial/iosMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="lottie/index.html">lottie</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2000900033%2FPackages%2F-2143191621"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">ios</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1821277064%2FPackages%2F-2143191621" anchor-label="lottie.animateLottieCompositionAsState" id="1821277064%2FPackages%2F-2143191621" data-filterable-set=":kottie:dokkaHtmlPartial/iosMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/iosMain" data-filterable-set=":kottie:dokkaHtmlPartial/iosMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="lottie.animateLottieCompositionAsState/index.html">lottie.animateLottieCompositionAsState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1821277064%2FPackages%2F-2143191621"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">ios</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1970730462%2FPackages%2F-2143191621" anchor-label="lottie.lottieComposition" id="1970730462%2FPackages%2F-2143191621" data-filterable-set=":kottie:dokkaHtmlPartial/iosMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/iosMain" data-filterable-set=":kottie:dokkaHtmlPartial/iosMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="lottie.lottieComposition/index.html">lottie.lottieComposition</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1970730462%2FPackages%2F-2143191621"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">ios</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="564843132%2FPackages%2F-115883757" anchor-label="skiaComposition" id="564843132%2FPackages%2F-115883757" data-filterable-set=":kottie:dokkaHtmlPartial/jsMain,:kottie:dokkaHtmlPartial/jvmMain,:kottie:dokkaHtmlPartial/skiaMain,:kottie:dokkaHtmlPartial/wasmJsMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/jsMain,:kottie:dokkaHtmlPartial/jvmMain,:kottie:dokkaHtmlPartial/skiaMain,:kottie:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":kottie:dokkaHtmlPartial/jsMain,:kottie:dokkaHtmlPartial/jvmMain,:kottie:dokkaHtmlPartial/skiaMain,:kottie:dokkaHtmlPartial/wasmJsMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="skiaComposition/index.html">skiaComposition</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="564843132%2FPackages%2F-115883757"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag js-like">js</div>
+              <div class="platform-tag jvm-like">jvm</div>
+              <div class="platform-tag common-like">skia</div>
+              <div class="platform-tag wasm-like">wasmJs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1362084269%2FPackages%2F1134073107" anchor-label="utils" id="-1362084269%2FPackages%2F1134073107" data-filterable-set=":kottie:dokkaHtmlPartial/commonMain"></a>
+    <div class="table-row" data-filterable-current=":kottie:dokkaHtmlPartial/commonMain" data-filterable-set=":kottie:dokkaHtmlPartial/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="utils/index.html">utils</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1362084269%2FPackages%2F1134073107"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
