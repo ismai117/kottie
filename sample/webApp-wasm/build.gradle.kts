@@ -20,7 +20,7 @@ afterEvaluate {
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "webApp-wasm"
+        outputModuleName = "webApp-wasm"
         browser {
             commonWebpackConfig {
                 outputFileName = "webApp-wasm.js"
