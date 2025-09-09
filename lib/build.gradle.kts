@@ -1,5 +1,4 @@
-import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -126,9 +125,9 @@ android {
 mavenPublishing {
 //    publishToMavenCentral(SonatypeHost.DEFAULT)
     // or when publishing to https://s01.oss.sonatype.org
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+    publishToMavenCentral()
     signAllPublications()
-    coordinates("io.github.ismai117", "kottie", "2.0.0")
+    coordinates("io.github.ismai117", "kottie", "2.1.0")
 
     pom {
         name.set(project.name)
