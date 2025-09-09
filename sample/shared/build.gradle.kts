@@ -45,7 +45,7 @@ kotlin {
                 implementation(compose.materialIconsExtended)
                 implementation(compose.ui)
                 implementation(compose.components.resources)
-                api(project(":lib"))
+                api(project(":kottie"))
             }
         }
         val androidMain by getting {

@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+@file:OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -18,7 +18,6 @@ afterEvaluate {
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         outputModuleName = "webApp-wasm"
         browser {

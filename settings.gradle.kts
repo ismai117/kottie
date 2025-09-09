@@ -1,7 +1,7 @@
 rootProject.name = "Kottie"
 
 include(":sample:androidApp")
-include(":lib")
+include(":kottie")
 include(":sample:desktopApp")
 include(":sample:shared")
 include(":sample:webApp")
