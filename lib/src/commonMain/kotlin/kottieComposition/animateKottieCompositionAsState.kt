@@ -7,7 +7,7 @@ import kottieAnimationState.KottieAnimationState
 
 @Composable
 expect fun animateKottieCompositionAsState(
-    composition: Any?,
+    composition: KottieCompositionResult,
     isPlaying: Boolean = true,
     restartOnPlay: Boolean = true,
     reverseOnRepeat: Boolean = false,

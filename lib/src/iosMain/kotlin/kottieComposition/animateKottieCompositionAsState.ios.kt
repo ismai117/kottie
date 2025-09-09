@@ -13,7 +13,7 @@ import lottie.animateLottieCompositionAsState.animateLottieCompositionAsState
 @OptIn(ExperimentalForeignApi::class)
 @Composable
 actual fun animateKottieCompositionAsState(
-    composition: Any?,
+    composition: KottieCompositionResult,
     isPlaying: Boolean,
     restartOnPlay: Boolean,
     reverseOnRepeat: Boolean ,
@@ -23,8 +23,8 @@ actual fun animateKottieCompositionAsState(
 ): State<KottieAnimationState> {
     val kottieAnimationState = remember { mutableStateOf(KottieAnimationState()) }
     val animationState = animateLottieCompositionAsState(
-        composition = composition as? CompatibleAnimationView,
-        isPlaying = isPlaying,
+        composition = composition.value as? CompatibleAnimationView,
+        isPlaying = isPlaying && composition.isSuccess,
         restartOnPlay = restartOnPlay,
         reverseOnRepeat = reverseOnRepeat,
         speed = speed,

@@ -1,29 +1,23 @@
 package lottie.lottieComposition
 
-import Lottie.CompatibleAnimation
 import Lottie.CompatibleAnimationView
-import Lottie.CompatibleRenderingEngineOptionAutomatic
-import Lottie.CompatibleRenderingEngineOptionCoreAnimation
-import Lottie.CompatibleRenderingEngineOptionDefaultEngine
-import Lottie.CompatibleRenderingEngineOptionMainThread
-import Lottie.CompatibleRenderingEngineOptionShared
-import Lottie.LottieAnimationView
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.ktor.client.HttpClient
-import io.ktor.client.request.get
-import io.ktor.client.statement.readBytes
+import io.ktor.client.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.isSuccess
 import kotlinx.cinterop.BetaInteropApi
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.allocArrayOf
 import kotlinx.cinterop.memScoped
+import kottieComposition.KottieCompositionResult
 import platform.Foundation.NSData
 import platform.Foundation.create
-import platform.UIKit.UIColor
 
 
 @OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
@@ -37,32 +31,42 @@ fun ByteArray.toNSData(): NSData = memScoped {
 @Composable
 internal fun rememberLottieComposition(
     spec: LottieCompositionSpec
-): CompatibleAnimationView? {
+): KottieCompositionResult {
 
     var animationState by remember(spec) {
-        mutableStateOf<CompatibleAnimationView?>(null)
+        mutableStateOf(KottieCompositionResult.loading())
     }
 
     LaunchedEffect(spec) {
         val animation = when (spec) {
             is LottieCompositionSpec.File -> {
-                CompatibleAnimationView(
+                KottieCompositionResult.success(CompatibleAnimationView(
                     data = spec.jsonString.encodeToByteArray().toNSData()
-                )
+                ))
             }
 
             is LottieCompositionSpec.Url -> {
-                val httpClient = HttpClient()
-                val data = httpClient.get(spec.url)
-                CompatibleAnimationView(
-                    data = data.readBytes().toNSData()
-                )
+                try {
+                    val httpClient = HttpClient()
+                    val data = httpClient.get(spec.url)
+                    if (data.status.isSuccess()) {
+                        val animation = CompatibleAnimationView(
+                            data = data.readBytes().toNSData()
+                        )
+                        KottieCompositionResult.success(animation)
+                    } else {
+                        KottieCompositionResult.error(Exception("Network failed with status code - ${data.status}"))
+                    }
+                } catch (e: Exception) {
+                    KottieCompositionResult.error(e)
+                }
             }
 
             is LottieCompositionSpec.JsonString -> {
-                CompatibleAnimationView(
+                val animation = CompatibleAnimationView(
                     data = spec.jsonString.encodeToByteArray().toNSData()
                 )
+                KottieCompositionResult.success(animation)
             }
 
         }

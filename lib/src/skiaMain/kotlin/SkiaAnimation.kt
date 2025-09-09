@@ -30,12 +30,12 @@ internal fun SkiaAnimation(
         else -> {
             Surface(
                 modifier = modifier
-                    .background(backgroundColor)
                     .drawAnimationOnCanvas(
                         animation = animation,
                         time = progress(),
                         invalidationController = invalidationController
-                    )
+                    ),
+                color = backgroundColor
             ) {}
         }
     }

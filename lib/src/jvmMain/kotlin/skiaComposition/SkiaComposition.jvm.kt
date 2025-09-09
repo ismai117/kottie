@@ -12,5 +12,12 @@ actual suspend fun getAnimation(url: String): String {
         .GET()
         .build()
     val response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString()).await()
-    return response.body()
+    if (response.statusCode() !in 200..299) {
+        throw Exception("Failed to fetch animation from $url: ${response.statusCode()}")
+    }
+    val responseBody = response.body()
+    if (responseBody.isBlank()) {
+        throw Exception("Received empty animation data from $url")
+    }
+    return responseBody
 }

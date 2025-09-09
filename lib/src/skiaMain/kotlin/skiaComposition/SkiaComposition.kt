@@ -6,28 +6,38 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import kottieComposition.KottieCompositionResult
 import org.jetbrains.skia.skottie.Animation
 
 
 @Composable
 internal fun rememberSkiaComposition(
     spec: SkiaCompositionSpec
-): Animation? {
+): KottieCompositionResult {
     var animationState by remember(spec) {
-        mutableStateOf<Animation?>(null)
+        mutableStateOf(KottieCompositionResult.loading())
     }
     LaunchedEffect(spec) {
         val animation = when (spec) {
             is SkiaCompositionSpec.File -> {
-                if (spec.jsonString.isNotBlank()) Animation.makeFromString(spec.jsonString) else return@LaunchedEffect
+                if (spec.jsonString.isNotBlank()) {
+                    KottieCompositionResult.success(Animation.makeFromString(spec.jsonString))
+                } else KottieCompositionResult.error(Exception("empty json"))
             }
 
             is SkiaCompositionSpec.Url -> {
-                Animation.makeFromString(getAnimation(url = spec.url))
+                try {
+                    val animation = Animation.makeFromString(getAnimation(url = spec.url))
+                     KottieCompositionResult.success(animation)
+                } catch (e: Exception) {
+                    KottieCompositionResult.success(e)
+                }
             }
 
             is SkiaCompositionSpec.JsonString -> {
-                if (spec.jsonString.isNotBlank()) Animation.makeFromString(spec.jsonString) else return@LaunchedEffect
+                if (spec.jsonString.isNotBlank()) {
+                    KottieCompositionResult.success(Animation.makeFromString(spec.jsonString))
+                } else KottieCompositionResult.error(Exception("empty json"))
             }
         }
         animationState = animation

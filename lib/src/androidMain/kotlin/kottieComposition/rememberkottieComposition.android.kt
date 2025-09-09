@@ -8,22 +8,15 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 @Composable
 actual fun rememberKottieComposition(
     spec: KottieCompositionSpec
-): Any? {
-    return when (spec) {
-        is KottieCompositionSpec.File -> {
-            (kottieComposition(spec = spec) as? LottieCompositionSpec)?.let {
-                rememberLottieComposition(it).value
-            }
-        }
-        is KottieCompositionSpec.Url -> {
-            (kottieComposition(spec = spec) as? LottieCompositionSpec)?.let {
-                rememberLottieComposition(it).value
-            }
-        }
-        is KottieCompositionSpec.JsonString -> {
-            (kottieComposition(spec = spec) as? LottieCompositionSpec)?.let {
-                rememberLottieComposition(it).value
-            }
-        }
-    }
+): KottieCompositionResult {
+    return (kottieComposition(spec = spec) as? LottieCompositionSpec)?.let { lottieSpec ->
+        val lottieResult = rememberLottieComposition(lottieSpec)
+        KottieCompositionResult(
+            value = lottieResult.value,
+            error = lottieResult.error,
+            isLoading = lottieResult.isLoading,
+            isComplete = lottieResult.isComplete,
+            isFailed = lottieResult.isComplete && lottieResult.error != null
+        )
+    } ?: KottieCompositionResult.error(IllegalStateException("Failed to create LottieCompositionSpec"))
 }

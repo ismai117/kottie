@@ -13,7 +13,7 @@ import kottieAnimationState.KottieAnimationState
 
 @Composable
 actual fun animateKottieCompositionAsState(
-    composition: Any?,
+    composition: KottieCompositionResult,
     isPlaying: Boolean,
     restartOnPlay: Boolean,
     reverseOnRepeat: Boolean ,
@@ -25,8 +25,8 @@ actual fun animateKottieCompositionAsState(
     val kottieAnimationState = remember { mutableStateOf(KottieAnimationState()) }
 
     val animationState = animateLottieCompositionAsState(
-        composition = composition as? LottieComposition,
-        isPlaying = isPlaying,
+        composition = composition.value as? LottieComposition,
+        isPlaying = isPlaying && composition.isSuccess,
         restartOnPlay = restartOnPlay,
         reverseOnRepeat = reverseOnRepeat,
         speed = speed,
