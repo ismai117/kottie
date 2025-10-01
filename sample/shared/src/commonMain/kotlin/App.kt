@@ -101,7 +101,7 @@ fun AnimationExample(
                     KottieAnimation(
                         composition = composition,
                         progress = { animationState.progress },
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize(),
                     )
                 }
 
