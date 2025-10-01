@@ -1,7 +1,7 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:////PointingToDeclaration/kottie/[root]/index.html
-$dokka.location://KottieAnimation/#androidx.compose.ui.Modifier#kottieComposition.KottieCompositionResult#kotlin.Function0[kotlin.Float]#androidx.compose.ui.graphics.Color#contentScale.ContentScale#kotlin.Boolean/PointingToDeclaration/kottie/[root]/-kottie-animation.html
+$dokka.location://KottieAnimation/#androidx.compose.ui.Modifier#kottieComposition.KottieCompositionResult#kotlin.Function0[kotlin.Float]#androidx.compose.ui.graphics.Color#contentScale.ContentScale#kotlin.Boolean#androidx.compose.ui.unit.Dp#androidx.compose.ui.unit.Dp/PointingToDeclaration/kottie/[root]/-kottie-animation.html
 $dokka.location:/SkiaAnimationState///PointingToDeclaration/kottie/[root]/-skia-animation-state/index.html
 $dokka.location:/SkiaAnimationState/SkiaAnimationState/#org.jetbrains.skia.skottie.Animation?#kotlin.Boolean#kotlin.Boolean#kotlin.Float#kotlin.Float#kotlin.Int#kotlin.Float/PointingToDeclaration/kottie/[root]/-skia-animation-state/-skia-animation-state.html
 $dokka.location:/SkiaAnimationState/composition/#/PointingToDeclaration/kottie/[root]/-skia-animation-state/composition.html
