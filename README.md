@@ -1,159 +1,180 @@
 [![Latest release](https://img.shields.io/github/v/release/ismai117/kottie?color=brightgreen&label=latest%20release)](https://github.com/ismai117/kottie/releases/latest)
 [![Latest build](https://img.shields.io/github/v/release/ismai117/kottie?color=orange&include_prereleases&label=latest%20build)](https://github.com/ismai117/kottie/releases)
-<br>
- 
-<h1 align="center">Kottie</h1></br>
+
+<h1 align="center">Kottie</h1>
 
 <p align="center">
 Compose Multiplatform animation library that parses Adobe After Effects animations. Inspired by Airbnb/Lottie.
 </p>
-</br>
 
 <p align="center">
   <img alt="Platform Android" src="https://img.shields.io/badge/Platform-Android-brightgreen"/>
   <img alt="Platform iOS" src="https://img.shields.io/badge/Platform-iOS-lightgray"/>
   <img alt="Platform JVM" src="https://img.shields.io/badge/Platform-JVM-orange"/>
   <img alt="Platform Js" src="https://img.shields.io/badge/Platform-Js-yellow"/>
-  <img alt="Platform Js" src="https://img.shields.io/badge/Platform-Wasm-purple"/>
+  <img alt="Platform Wasm" src="https://img.shields.io/badge/Platform-Wasm-purple"/>
+</p>
 
 <p align="center">
-  <img align="center" src="https://github.com/ismai117/kottie/assets/88812838/1f46e16b-2fff-4fff-8a33-5d954b9e0c03" alt="Kottie" width="400"/>
-</p> </br>
+  <img src="https://github.com/ismai117/kottie/assets/88812838/1f46e16b-2fff-4fff-8a33-5d954b9e0c03" alt="Kottie" width="400"/>
+</p>
 
-## Getting Started
+## Installation
 
-To integrate Kottie into your Kotlin Multiplatform project
+Add the dependency in your common module's `commonMain` source set:
 
-Add the dependency in your common module's commonMain source set
-
-```
+```kotlin
 implementation("io.github.ismai117:kottie:latest_version")
 ```
 
-In Xcode, select “File” → “Add Packages...”
-</br>
-Enter https://github.com/airbnb/lottie-spm.git
+### iOS Setup
 
-<br>
+For iOS, add the Lottie framework via Swift Package Manager:
 
-## Load Animation Composition
+1. In Xcode, select **File → Add Packages...**
+2. Enter `https://github.com/airbnb/lottie-spm.git`
+3. Go to **File → Packages → Resolve Package Versions**
 
-Load the animation composition using rememberKottieComposition function. Choose the appropriate specification for loading the composition (File, Url, or JsonString).
+> **Note:** If building from Android Studio, make sure to resolve SPM packages in Xcode first.
 
-```Kotlin
+## Usage
 
-var animation by remember { mutableStateOf("") }
+### Basic Example
 
-LaunchedEffect(Unit){
-    animation = Res.readBytes("files/animation.json").decodeToString()
-}
-
+```kotlin
+// Load composition
 val composition = rememberKottieComposition(
-    spec = KottieCompositionSpec.File(animation) // Or KottieCompositionSpec.Url || KottieCompositionSpec.JsonString
+    KottieCompositionSpec.Url("https://example.com/animation.json")
+)
+
+// Animate
+val animationState by animateKottieCompositionAsState(
+    composition = composition,
+    iterations = Kottie.IterateForever
+)
+
+// Display
+KottieAnimation(
+    composition = composition,
+    progress = { animationState.progress },
+    modifier = Modifier.size(300.dp)
 )
 ```
 
-## Display the Animation
+### Loading Compositions
 
-Display the animation using KottieAnimation composable
+Load animations from different sources using `KottieCompositionSpec`:
 
-```Kotlin
-MaterialTheme {
+```kotlin
+// From URL
+val composition = rememberKottieComposition(
+    KottieCompositionSpec.Url("https://example.com/animation.json")
+)
 
-    Column(
-        modifier = modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
+// From file (using Compose Resources)
+var json by remember { mutableStateOf("") }
+LaunchedEffect(Unit) {
+    json = Res.readBytes("files/animation.json").decodeToString()
+}
+val composition = rememberKottieComposition(KottieCompositionSpec.File(json))
 
+// From JSON string
+val composition = rememberKottieComposition(
+    KottieCompositionSpec.JsonString("""{"v":"5.7.4",...}""")
+)
+```
+
+### Handling Loading States
+
+`KottieComposition` is a sealed type with three states:
+
+```kotlin
+when (composition) {
+    is KottieComposition.Loading -> {
+        CircularProgressIndicator()
+    }
+    is KottieComposition.Success -> {
         KottieAnimation(
             composition = composition,
-            progress = { animationState.progress },
-            modifier = modifier.size(300.dp)
+            progress = { animationState.progress }
         )
-
+    }
+    is KottieComposition.Failure -> {
+        Text("Error: ${composition.error.message}")
     }
 }
 ```
 
-## Control Animation Playback
+### Controlling Playback
 
-You can control animation playback by using a mutableStateOf variable to toggle the animation on and off.
-
-```Kotlin
-var playing by remember { mutableStateOf(false) }
+```kotlin
+var isPlaying by remember { mutableStateOf(true) }
 
 val animationState by animateKottieCompositionAsState(
     composition = composition,
-    isPlaying = playing
+    isPlaying = isPlaying
 )
 
-MaterialTheme {
-
-    Column(
-        modifier = modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-
-        KottieAnimation(
-            composition = composition,
-            progress = { animationState.progress },
-            modifier = modifier.size(300.dp)
-        )
-
-        Button(
-           onClick = {
-              playing = true
-           }
-        ){
-           Text("Play")
-        }
-
-    }
-}
-
-```
-
-## Adjusting Speed
-
-To change the playback speed of the animation, modify the speed parameter in the animateKottieCompositionAsState function. By default, the speed is set to 1f, indicating normal speed playback. You can increase the speed for faster playback or decrease it for slower playback.
-
-```Kotlin
-val animationState by animateKottieCompositionAsState(
-    composition = composition,
-    speed = 1.5f // Adjust the speed as needed
-)
-```
-
-## Set Iterations
-
-By default, the animation plays once and stops (iterations = 1). You can specify the number of times the animation should repeat using the iterations parameter. Alternatively, you can set it to KottieConstants.IterateForever for the animation to loop indefinitely.
-
-```Kotlin
-val animationState by animateKottieCompositionAsState(
-    composition = composition,
-    iterations = 3 // Play the animation 3 times
-)
-```
-
-## Observing Animation State
-
-You can observe animation state changes:
-
-
-```Kotlin
-LaunchedEffect(
-    key1 = animationState.isPlaying
-) {
-    if (animationState.isPlaying) {
-        println("Animation Playing")
-    }
-    if (animationState.isCompleted) {
-        println("Animation Completed")
-        playing = false
-    }
+Button(onClick = { isPlaying = !isPlaying }) {
+    Text(if (isPlaying) "Pause" else "Play")
 }
 ```
 
+### Speed
 
+```kotlin
+val animationState by animateKottieCompositionAsState(
+    composition = composition,
+    speed = 1.5f
+)
+```
+
+### Iterations
+
+```kotlin
+// Play 3 times
+val animationState by animateKottieCompositionAsState(
+    composition = composition,
+    iterations = 3
+)
+
+// Loop forever
+val animationState by animateKottieCompositionAsState(
+    composition = composition,
+    iterations = Kottie.IterateForever
+)
+```
+
+### Observing Animation State
+
+```kotlin
+val animationState by animateKottieCompositionAsState(
+    composition = composition,
+    iterations = Kottie.IterateForever
+)
+
+LaunchedEffect(animationState) {
+    println("Progress: ${animationState.progress}")
+    println("Playing: ${animationState.isPlaying}")
+    println("Completed: ${animationState.isCompleted}")
+    println("Iteration: ${animationState.iteration}")
+}
+```
+
+## License
+
+```
+Copyright 2024 ismai117
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
