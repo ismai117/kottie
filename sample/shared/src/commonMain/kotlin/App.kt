@@ -24,18 +24,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import kottie.Kottie
+import kottie.KottieAnimation
+import kottie.KottieComposition
+import kottie.KottieCompositionSpec
+import kottie.animateKottieCompositionAsState
+import kottie.rememberKottieComposition
 import kottie.sample.shared.generated.resources.Res
-import kottieComposition.KottieCompositionSpec
-import kottieComposition.animateKottieCompositionAsState
-import kottieComposition.rememberKottieComposition
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import utils.KottieConstants
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
-fun App(
-    modifier: Modifier = Modifier,
-) {
+fun App(modifier: Modifier = Modifier) {
     MaterialTheme {
         Column(
             modifier = modifier
@@ -45,102 +44,21 @@ fun App(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "API usage",
+                text = "Kottie Demo",
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold
             )
 
-            ExampleCard(
-                title = "1. File Loading",
-                content = { FileLoadingExample() }
-            )
-
-            ExampleCard(
-                title = "2. URL Loading",
-                content = { UrlLoadingExample() }
-            )
-
-            ExampleCard(
-                title = "3. Valid JSON String",
-                content = { ValidJsonExample() }
-            )
-        }
-    }
-}
-
-@Composable
-fun AnimationExample(
-    composition: kottieComposition.KottieCompositionResult,
-    reverseOnRepeat: Boolean = false,
-    errorMessage: String = "Error",
-    showErrorDetails: Boolean = false,
-    customFailedContent: (@Composable () -> Unit)? = null
-) {
-    val animationState by animateKottieCompositionAsState(
-        composition = composition,
-        iterations = KottieConstants.IterateForever,
-        reverseOnRepeat = reverseOnRepeat
-    )
-
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        StatusIndicator(composition)
-
-        Box(
-            modifier = Modifier.size(100.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            when {
-                composition.isLoading -> {
-                    CircularProgressIndicator()
-                }
-
-                composition.isSuccess -> {
-                    KottieAnimation(
-                        composition = composition,
-                        progress = { animationState.progress },
-                        modifier = Modifier.fillMaxSize()
-                    )
-                }
-
-                composition.isFailed -> {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "❌",
-                            style = MaterialTheme.typography.headlineLarge
-                        )
-                        Text(
-                            text = errorMessage,
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-                }
-            }
-        }
-
-        // Custom content for different states
-        when {
-            composition.isFailed && customFailedContent != null -> {
-                customFailedContent()
+            AnimationCard(title = "From File") {
+                FileAnimation()
             }
 
-            composition.isFailed && showErrorDetails -> {
-                Column {
-                    Text(
-                        text = "Error Details:",
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                    Text(
-                        text = composition.error?.message ?: "Unknown error",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = Color.Red
-                    )
-                }
+            AnimationCard(title = "From URL") {
+                UrlAnimation()
+            }
+
+            AnimationCard(title = "From JSON") {
+                JsonAnimation()
             }
         }
     }
@@ -148,153 +66,128 @@ fun AnimationExample(
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun FileLoadingExample() {
-    var animation by remember { mutableStateOf("") }
+private fun FileAnimation() {
+    var json by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
-        animation = Res.readBytes("files/animation.json").decodeToString()
+        json = Res.readBytes("files/animation.json").decodeToString()
     }
 
-    val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.File(animation)
-    )
-
-    AnimationExample(
-        composition = composition,
-        reverseOnRepeat = true
-    )
+    val composition = rememberKottieComposition(KottieCompositionSpec.File(json))
+    AnimationWithState(composition)
 }
 
 @Composable
-fun UrlLoadingExample() {
+private fun UrlAnimation() {
     val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.Url("https://lottie.host/4cd47dc2-c1ae-4d46-b908-2df421fa26ca/PdsqGQXLt0.json")
+        KottieCompositionSpec.Url("https://lottie.host/4cd47dc2-c1ae-4d46-b908-2df421fa26ca/PdsqGQXLt0.json")
     )
-
-    AnimationExample(
-        composition = composition,
-        errorMessage = "Network Error"
-    )
+    AnimationWithState(composition)
 }
 
 @Composable
-fun ValidJsonExample() {
-    val validLottieJson = """
+private fun JsonAnimation() {
+    val json = """
     {
-      "v": "5.7.4",
-      "fr": 25,
-      "ip": 0,
-      "op": 50,
-      "w": 100,
-      "h": 100,
-      "nm": "Simple Square",
-      "ddd": 0,
-      "assets": [],
-      "layers": [
-        {
-          "ddd": 0,
-          "ind": 1,
-          "ty": 4,
-          "nm": "Square",
-          "sr": 1,
-          "ks": {
-            "o": {"a": 0, "k": 100},
-            "r": {"a": 1, "k": [
-              {"t": 0, "s": [0]},
-              {"t": 49, "s": [360]}
-            ]},
-            "p": {"a": 0, "k": [50, 50]},
-            "a": {"a": 0, "k": [0, 0]},
-            "s": {"a": 0, "k": [100, 100]}
-          },
-          "ao": 0,
-          "shapes": [
-            {
-              "ty": "rc",
-              "d": 1,
-              "s": {"a": 0, "k": [40, 40]},
-              "p": {"a": 0, "k": [0, 0]},
-              "r": {"a": 0, "k": 5}
-            },
-            {
-              "ty": "fl",
-              "c": {"a": 0, "k": [0.2, 0.6, 1, 1]},
-              "o": {"a": 0, "k": 100}
-            }
-          ],
-          "ip": 0,
-          "op": 50,
-          "st": 0
-        }
-      ],
+      "v": "5.7.4", "fr": 25, "ip": 0, "op": 50, "w": 100, "h": 100,
+      "nm": "Square", "ddd": 0, "assets": [],
+      "layers": [{
+        "ddd": 0, "ind": 1, "ty": 4, "nm": "Square", "sr": 1,
+        "ks": {
+          "o": {"a": 0, "k": 100},
+          "r": {"a": 1, "k": [{"t": 0, "s": [0]}, {"t": 49, "s": [360]}]},
+          "p": {"a": 0, "k": [50, 50]},
+          "a": {"a": 0, "k": [0, 0]},
+          "s": {"a": 0, "k": [100, 100]}
+        },
+        "ao": 0,
+        "shapes": [
+          {"ty": "rc", "d": 1, "s": {"a": 0, "k": [40, 40]}, "p": {"a": 0, "k": [0, 0]}, "r": {"a": 0, "k": 5}},
+          {"ty": "fl", "c": {"a": 0, "k": [0.2, 0.6, 1, 1]}, "o": {"a": 0, "k": 100}}
+        ],
+        "ip": 0, "op": 50, "st": 0
+      }],
       "markers": []
     }
     """.trimIndent()
 
-    val composition = rememberKottieComposition(
-        spec = KottieCompositionSpec.JsonString(validLottieJson)
-    )
-
-    AnimationExample(
-        composition = composition,
-    )
+    val composition = rememberKottieComposition(KottieCompositionSpec.JsonString(json))
+    AnimationWithState(composition)
 }
 
-
 @Composable
-fun StatusIndicator(composition: kottieComposition.KottieCompositionResult) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.width(80.dp)
+private fun AnimationWithState(composition: KottieComposition) {
+    val animationState by animateKottieCompositionAsState(
+        composition = composition,
+        iterations = Kottie.IterateForever
+    )
+
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        when {
-            composition.isLoading -> {
-                Text(
-                    text = "🟡",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-                Text(
-                    text = "Loading",
-                    style = MaterialTheme.typography.bodySmall
-                )
+        // Status
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.width(70.dp)
+        ) {
+            when (composition) {
+                is KottieComposition.Loading -> {
+                    Text("...", style = MaterialTheme.typography.titleLarge)
+                    Text("Loading", style = MaterialTheme.typography.bodySmall)
+                }
+                is KottieComposition.Success -> {
+                    Text("OK", style = MaterialTheme.typography.titleLarge, color = Color(0xFF4CAF50))
+                    Text("Ready", style = MaterialTheme.typography.bodySmall)
+                }
+                is KottieComposition.Failure -> {
+                    Text("!", style = MaterialTheme.typography.titleLarge, color = Color(0xFFF44336))
+                    Text("Error", style = MaterialTheme.typography.bodySmall)
+                }
             }
+        }
 
-            composition.isSuccess -> {
-                Text(
-                    text = "🟢",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-                Text(
-                    text = "Success",
-                    style = MaterialTheme.typography.bodySmall
-                )
+        // Animation
+        Box(
+            modifier = Modifier.size(100.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            when (composition) {
+                is KottieComposition.Loading -> CircularProgressIndicator()
+                is KottieComposition.Success -> {
+                    KottieAnimation(
+                        composition = composition,
+                        progress = { animationState.progress },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+                is KottieComposition.Failure -> {
+                    Text("X", style = MaterialTheme.typography.headlineLarge, color = Color(0xFFF44336))
+                }
             }
+        }
 
-            composition.isFailed -> {
-                Text(
-                    text = "🔴",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-                Text(
-                    text = "Failed",
-                    style = MaterialTheme.typography.bodySmall
-                )
-            }
+        // Error details
+        if (composition is KottieComposition.Failure) {
+            Text(
+                text = composition.error.message ?: "Unknown error",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color(0xFFF44336),
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }
 
 @Composable
-fun ExampleCard(
+private fun AnimationCard(
     title: String,
     content: @Composable () -> Unit
 ) {
-    Card(
-        modifier = Modifier.fillMaxWidth()
-    ) {
+    Card(modifier = Modifier.fillMaxWidth()) {
         Column(
             modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
                 text = title,
@@ -305,6 +198,3 @@ fun ExampleCard(
         }
     }
 }
-
-
-
