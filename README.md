@@ -35,8 +35,6 @@ For iOS, add the Lottie framework via Swift Package Manager:
 2. Enter `https://github.com/airbnb/lottie-spm.git`
 3. Go to **File → Packages → Resolve Package Versions**
 
-> **Note:** If building from Android Studio, make sure to resolve SPM packages in Xcode first.
-
 ## Usage
 
 ### Basic Example
